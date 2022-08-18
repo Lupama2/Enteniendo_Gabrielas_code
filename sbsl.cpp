@@ -7,15 +7,16 @@
 #pragma argsused
 
 
-#include <vcl.h>
+//#include <vcl.h>
 #include<math.h>
-#include <iostream.h>
+#include <iostream>
 #include <conio.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <fstream.h>
-#include <iomanip.h>
+#include <fstream>
+#include <iomanip>
 
+using namespace std;
 
 //***************INICIO DE LLAMADO DE FUNCIONES*********************************
 void derivada(double t,double *y,double TB,double mp,double k,double *colpoints,
@@ -67,7 +68,7 @@ long double espectro(long double RADIUS,long double TEMPERATURE, long double NAR
 
 //*************INICIO DE LA PARTE PRINCIPAL*************************************
 
-void main(){
+int main(){
 
    char *nombre1="res1.dat";
    char *nombre2="res2.dat";
@@ -243,7 +244,7 @@ void main(){
 
    double pi=3.141592653589;
 
-   long double *electra=new long double[lambdapuntos+1];
+   long double *electra=new long double[int(lambdapuntos)+1];
 
    long double RADIUS,TEMPERATURE,NAR;
    long double LAMBDA;
@@ -266,7 +267,7 @@ void main(){
    }
 
    //matriz que define el sistema de ecuaciones para los coeficientes que
-   //acompañan a los polinomios de Chebyshev
+   //acompaï¿½an a los polinomios de Chebyshev
 
    for(j=0;j<=NCh;j++){
       for(i=0;i<=NCh;i++)
@@ -776,7 +777,7 @@ void main(){
    out6.close();
    out7.close();
 
-
+   return 0;
 
 } //fin del main
 

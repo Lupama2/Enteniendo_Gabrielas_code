@@ -2,8 +2,7 @@
 
 El objetivo es revisar el código de Gabirela, reeestructurarlo e ir revisando en la tésis a qué se dedica cada parte del código, de modo de entender los fenómenos físicos involucrados y ver cómo ella los afronta con un código eficiente.
 
-Parto de la base de que el código de Gabriela anda sin problemas. Luego de cada tarea tengo que correr el código y ver que se llegue a lo mismo que el resultado inicial. Resultado inicial:
-
+Parto de la base de que el código de Gabriela anda sin problemas. Luego de cada tarea tengo que correr el código y ver que se llegue a lo mismo que el resultado inicial. Descubrí que Borland y VScode llegan a los mismos resultados inicialmente, pero al cabo de un tiempo difieren. No sé si es un problema del IDE, del compilador o de qué... así que a partir de ahora voy a programar en Borland.
 
 
 
@@ -16,7 +15,7 @@ test.exe
 
 
 Tareas:
-- [ ] Los numeritos de Borland son distintos a los que yo llego. 
+- [x] Los numeritos de Borland son distintos a los que yo llego. Copié exactamente el código de Borland y no llego a los mismos resultados. Llego a los mismos nros inicialemtne pero luego de un tiempo el código deja de andar. Me voy a poner a programar en Borland...no me queda otra.
 - [ ] Ver cómo relaciona los arhcivos entre sí.
 - [ ] Intentar no tener que declarar todas las funciones en cada archivo, sino hacerlo con un header para ser más prolijos
 - [ ] Ir a FUNCIONS.cpp e intentar entender qué hace cada función, agregando los comentarios que considere necesarios.
