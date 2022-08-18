@@ -14,3 +14,7 @@ Tareas:
 - [ ] Hacer lo mismo en ecdiff y PSUSULSO (parámetros)
 - [ ]
 
+
+
+Tareas completadas:
+
