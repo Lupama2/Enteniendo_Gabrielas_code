@@ -1,5 +1,5 @@
 #include<math.h>
-#include<iostream>
+#include<iostream.h>
 
   
 double erf(double Omega, int N);
