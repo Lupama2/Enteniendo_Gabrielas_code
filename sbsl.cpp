@@ -7,6 +7,7 @@
 #pragma argsused
 
 
+
 //#include <vcl.h>
 #include<math.h>
 #include <iostream>
@@ -61,6 +62,8 @@ long double espectro(long double RADIUS,long double TEMPERATURE, long double NAR
                      long double Z,long double LAMBDA,long double EION,
                      long double CTR, long double DTR, long double E2);
 
+double pow_(double x, double y);
+double sqrt_(double x);
 
 //*************FIN DE LLAMADO DE FUNCIONES**************************************
 
@@ -70,13 +73,13 @@ long double espectro(long double RADIUS,long double TEMPERATURE, long double NAR
 
 int main(){
 
-   char *nombre1="res1.dat";
-   char *nombre2="res2.dat";
-   char *nombre3="res3.dat";
-   char *nombre4="res4.dat";
-   char *nombre5="res5.dat";
-   char *nombre6="res6.dat";
-   char *nombre7="res7.dat";
+   const char *nombre1="res1.dat";
+   const char *nombre2="res2.dat";
+   const char *nombre3="res3.dat";
+   const char *nombre4="res4.dat";
+   const char *nombre5="res5.dat";
+   const char *nombre6="res6.dat";
+   const char *nombre7="res7.dat";
 
 
    ofstream out1(nombre1);
@@ -303,9 +306,9 @@ int main(){
       }
 
       for(kk=0;kk<=NCh;kk++)
-         Q[kk][0]=Ch[kk][0]/sqrt(sum);
+         Q[kk][0]=Ch[kk][0]/sqrt_(sum);
 
-      R[0][0]=sqrt(sum);
+      R[0][0]=sqrt_(sum);
 
 
 
@@ -333,7 +336,7 @@ int main(){
             cont=cont+1;
             }
 
-         R[j][j]=sqrt(R[j][j]);
+         R[j][j]=sqrt_(R[j][j]);
 
          for(kk=0;kk<=NCh;kk++)
             Q[kk][j]=vv[kk][j]/R[j][j];
@@ -370,11 +373,11 @@ int main(){
    y[1]=Ri; //Inicializacion del radio
    y[2]=Vi; //Inicializacion de la velocidad
    y[3]=Tinf; // Inicializacion de la temperatura
-   nh2o0=Na*pvap0*(4.0/3.0*pi*y[1]*y[1]*y[1])/Rg/(Tinf); //beta*Na*pvap0*(4.0/3.0*3.14159*pow(Rprueba,3.0))/Rg/T0;
+   nh2o0=Na*pvap0*(4.0/3.0*pi*y[1]*y[1]*y[1])/Rg/(Tinf); //beta*Na*pvap0*(4.0/3.0*3.14159*pow_(Rprueba,3.0))/Rg/T0;
    y[4]=nh2o0;//cantidad de particulas iniciales de vapor de agua
    y[5]=Tinf; // Inicializacion de la temperatura de la pared de la burbuja en la cara externa
-   //RAr=pow(pow(Ri,3.0)-pow(Rgas,3.0),1./3.0);
-   nAr=Na*P0*4.0/3.0*3.14159*pow(R0i,3.0)/Rg/T0;
+   //RAr=pow_(pow_(Ri,3.0)-pow_(Rgas,3.0),1./3.0);
+   nAr=Na*P0*4.0/3.0*3.14159*pow_(R0i,3.0)/Rg/T0;
 
 
     if(NCh3>6){
@@ -382,7 +385,7 @@ int main(){
          y[i]=0.0;
    }
 
-//   nh2o0=pvap0*(4.0/3.0*pi*pow(Ri,3.0))*Na/Rg/(Tinf);
+//   nh2o0=pvap0*(4.0/3.0*pi*pow_(Ri,3.0))*Na/Rg/(Tinf);
 
    nh20=y[Nvar2+1]=2.0/3.0*nAr;
 //   nh20=y[Nvar2+1]=0.*nAr;
@@ -408,7 +411,7 @@ int main(){
    nh2o20=y[Nvar2+18]=0.0*nAr;
    nho20=y[Nvar2+19]=0.0*nAr;
 
-   //ngas0=Na*P0*4.0/3.0*3.14159*pow(Rgas,3.0)/Rg/T0; //nitrogeno
+   //ngas0=Na*P0*4.0/3.0*3.14159*pow_(Rgas,3.0)/Rg/T0; //nitrogeno
 
    y[NCh3+NumEsp]=Ri;
    y[NCh3+NumEsp+1]=0.0;
@@ -456,8 +459,8 @@ int main(){
 
    nsal=0;
 
+   int conta = 0;
    while ((x<=tfin)&& (!kbhit())){
-
 
       xold=x;
 
@@ -470,7 +473,7 @@ int main(){
       //*********************************calcula el mp**************************
       //************************************************************************
 
-      V=4.0/3.0*pi*pow(y[1],3.0); //volumen total
+      V=4.0/3.0*pi*pow_(y[1],3.0); //volumen total
 
       MasaMolar(Masa);
 
@@ -480,6 +483,9 @@ int main(){
 
       while(icont<=NumEsp){
          M=M+(Masa[icont]*y[Nvar2+icont])/Na;
+         //Hay un Nan:
+         // if(isnan(y[Nvar2+icont])){cout << "ENCONTRÉ un NaN -------------------------------------------" << endl;}
+
          icont=icont+1;
       }
 
@@ -538,7 +544,7 @@ int main(){
 
       m=M/ntot; //masa media por particula
 
-      landa=V/(sqrt(2.0)*sigmap*ntot);  //camino libre medio
+      landa=V/(sqrt_(2.0)*sigmap*ntot);  //camino libre medio
 
       v=V/ntot*Na; //volumen molar
 
@@ -556,6 +562,10 @@ int main(){
          icont=icont+1;
       }
 
+      //Encontré un Nan:
+      // if(isnan(ntot)){cout << "ENCONTRÉ un NaN -------------------------------------------" << endl;}
+      // if(isnan(V)){cout << "ENCONTRÉ un NaN -------------------------------------------" << endl;}
+
       np=ntot/V;
 
       Xi=k/(8.0/2.0*nh2o0*K+5.0/2.0*nAr*K);
@@ -563,10 +573,10 @@ int main(){
       if(y[2] == 0)
          lth=y[1]/pi;
       else{
-         if((y[1]/pi)<(sqrt(y[1]*Xi/fabs(y[2]))))
+         if((y[1]/pi)<(sqrt_(y[1]*Xi/fabs(y[2]))))
             lth=y[1]/pi;
-         else
-            lth=sqrt(y[1]*Xi/fabs(y[2]));
+         else{
+            lth=sqrt_(y[1]*Xi/fabs(y[2]));}
       }
 
 
@@ -574,6 +584,8 @@ int main(){
          TB= calculaTBY(Tmin,Tmax,epsilon,y[5],k,landa,np,y[3],m);
 
       if(modelo == 2)
+         //Encontré un NaN:
+         // if(isnan(y[3])){cout << "ENCONTRÉ un NaN -------------------------------------------" << endl;}
          TB= calculaTBT(Tmin,Tmax,epsilon,y[5],k,lth,np,y[3],m);
 
 
@@ -624,9 +636,8 @@ int main(){
       pv=y[Nvar2+6]/ntot*pg; //presion parcial del vapor de agua
 
 
-      if(rapidez==1)
-         mp=alfaM/sqrt(2.0*3.14159*Rv)*(pvap/sqrt(y[5])-pv/sqrt(TB));
-
+      if(rapidez==1){
+         mp=alfaM/sqrt(2.0*3.14159*Rv)*(pvap/sqrt(y[5])-pv/sqrt(TB));}
       else
          mp=calculamp(mpmin,mpmax,epsilon,pvap,pv,y[3],y[5],TB,N);
 
@@ -731,6 +742,8 @@ int main(){
       }
 
 
+   conta = conta + 1;
+   if(conta%1000 == 0){cout << "t =  " << x << endl;}
 
    } //fin del while***************************
 
@@ -767,7 +780,7 @@ int main(){
       out5<<fotones<<endl;
 
 
-   cout<<"termine"<<endl;
+   cout<< x << "\ttermine"<<endl;
    getch();
    out1.close();
    out2.close();
@@ -776,6 +789,8 @@ int main(){
    out5.close();
    out6.close();
    out7.close();
+
+
 
    return 0;
 

@@ -5,7 +5,7 @@ El objetivo es revisar el código de Gabirela, reeestructurarlo e ir revisando e
 Parto de la base de que el código de Gabriela anda sin problemas. Luego de cada tarea tengo que correr el código y ver que se llegue a lo mismo que el resultado inicial. Descubrí que Borland y VScode llegan a los mismos resultados inicialmente, pero al cabo de un tiempo difieren. No sé si es un problema del IDE, del compilador o de qué... así que a partir de ahora voy a programar en Borland.
 
 
-
+Al parecer hay un error en la raíz cuadrada.
 
 Para compilar:
 g++ -S ecdiff.cpp FUNCIONS.cpp PSULSOAR.cpp Rkqc.cpp Rkutta4.cpp sbsl.cpp 

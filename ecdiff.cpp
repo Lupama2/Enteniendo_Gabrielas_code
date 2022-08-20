@@ -1,6 +1,8 @@
 #include<math.h>
 #include<iostream>
 
+using namespace std;
+
   
 double erf(double Omega, int N);
 double PolCheb(double y, int NCh);
@@ -12,6 +14,9 @@ void Conductividad2(double *k2);
 void reacciones(double *y,double VolExcl,double ntot,double V,int Nvar2,double *r);
 void DiamColVect(double *DiamCol);
 void fraccion(double *fracc);
+
+double pow_(double x, double y);
+double sqrt_(double x);
 
 void derivada(double t,double *y,double TB, double mp,double k,
               double *colpoints,double **Q,double **R, double *dydt){
@@ -126,7 +131,7 @@ void derivada(double t,double *y,double TB, double mp,double k,
    //***************************************************************************
    //***************************************************************************
 
-   V=4.0/3.0*pi*pow(y[1],3.0); //Volumen
+   V=4.0/3.0*pi*pow_(y[1],3.0); //Volumen
 
    MasaMolar(Masa);
 
@@ -151,7 +156,7 @@ void derivada(double t,double *y,double TB, double mp,double k,
 
    m=M/ntot; //masa media de una particula
 
-   landa=V/(sqrt(2.0)*sigmap*ntot);  //camino libre medio
+   landa=V/(sqrt_(2.0)*sigmap*ntot);  //camino libre medio
 
    v=V/ntot*Na; //volumen molar
 
@@ -215,7 +220,7 @@ void derivada(double t,double *y,double TB, double mp,double k,
 
          if((y[Nvar2+iw] != 0) && (y[Nvar2+j] != 0))
             InvDi[iw]+=(y[Nvar2+j]/ntot)/(1.0-y[Nvar2+iw]/ntot)/
-            (3.0/8.0*sqrt(fabs(pi*K*Tinf/(2.0*Masa[iw]*Masa[j]/
+            (3.0/8.0*sqrt_(fabs(pi*K*Tinf/(2.0*Masa[iw]*Masa[j]/
             (Masa[iw]+Masa[j])))/
             ((y[Nvar2+iw]+y[Nvar2+j])/V*pi*0.5*(DiamCol[iw]+DiamCol[j])*
             0.5*(DiamCol[iw]+DiamCol[j]))));
@@ -224,7 +229,7 @@ void derivada(double t,double *y,double TB, double mp,double k,
 
       if((y[Nvar2+iw] != 0))
          InvDi[iw]-=(y[Nvar2+iw]/ntot)/(1.0-y[Nvar2+iw]/ntot)/
-         (3.0/8.0*sqrt(fabs(pi*K*Tinf/(2.0*Masa[iw]*Masa[iw]/
+         (3.0/8.0*sqrt_(fabs(pi*K*Tinf/(2.0*Masa[iw]*Masa[iw]/
          (Masa[iw]+Masa[iw])))/
          ((y[Nvar2+iw]+y[Nvar2+iw])/V*pi*0.5*(DiamCol[iw]+DiamCol[iw])*
          0.5*(DiamCol[iw]+DiamCol[iw]))));
@@ -241,8 +246,8 @@ void derivada(double t,double *y,double TB, double mp,double k,
          if(y[2]==0.0)
             ldiffi[i]=y[1]/pi;
          else{
-            if(sqrt(y[1]/InvDi[i]/fabs(y[2])) < (y[1]/pi))
-               ldiffi[i]=sqrt(y[1]/InvDi[i]/fabs(y[2]));
+            if(sqrt_(y[1]/InvDi[i]/fabs(y[2])) < (y[1]/pi))
+               ldiffi[i]=sqrt_(y[1]/InvDi[i]/fabs(y[2]));
             else
                ldiffi[i]=y[1]/pi;
          }
@@ -506,11 +511,11 @@ void derivada(double t,double *y,double TB, double mp,double k,
       icont=icont+1;
    }
 
-   dadt=-2.0/pow(ntot,3.0)*(a_Ar*ngas*ngas+2.0*a_Arh2o*ngas*y[Nvar2+6]-a_Arh2o*ngas*ntot+
+   dadt=-2.0/pow_(ntot,3.0)*(a_Ar*ngas*ngas+2.0*a_Arh2o*ngas*y[Nvar2+6]-a_Arh2o*ngas*ntot+
    a_h2o*y[Nvar2+6]*y[Nvar2+6]-a_h2o*y[Nvar2+6]*ntot)*dntdt;
    //derivada respecto del tiempo de la const. a de VW
 
-   dbdt=-2.0/pow(ntot,3.0)*(b_Ar*ngas*ngas+2.0*b_Arh2o*ngas*y[Nvar2+6]-b_Arh2o*ngas*ntot+
+   dbdt=-2.0/pow_(ntot,3.0)*(b_Ar*ngas*ngas+2.0*b_Arh2o*ngas*y[Nvar2+6]-b_Arh2o*ngas*ntot+
    b_h2o*y[Nvar2+6]*y[Nvar2+6]-b_h2o*y[Nvar2+6]*ntot)*dntdt;
    //derivada respecto del tiempo de la const. b de VW
 
@@ -522,10 +527,10 @@ void derivada(double t,double *y,double TB, double mp,double k,
    if(y[2] == 0)
      lth=y[1]/pi;
    else{
-      if((y[1]/pi)<(sqrt(y[1]*Xi/fabs(y[2]))))
+      if((y[1]/pi)<(sqrt_(y[1]*Xi/fabs(y[2]))))
 	 lth=y[1]/pi;
       else
-	 lth=sqrt(y[1]*Xi/fabs(y[2]));
+	 lth=sqrt_(y[1]*Xi/fabs(y[2]));
    }
 
 
@@ -622,7 +627,7 @@ void derivada(double t,double *y,double TB, double mp,double k,
 	       	+et16*dydt[Nvar2+16]+et17*dydt[Nvar2+17]+et18*dydt[Nvar2+18]+et19*dydt[Nvar2+19]);
 
 
-   det1=5.0/2.0*K+K*pow(6325.0,2.0)/(exp(6325.0/y[3])-1.0)/(exp(6325.0/y[3])-1.0)/y[3]/y[3];
+   det1=5.0/2.0*K+K*pow_(6325.0,2.0)/(exp(6325.0/y[3])-1.0)/(exp(6325.0/y[3])-1.0)/y[3]/y[3];
    det2=3.0/2.0*K;
    det3=3.0/2.0*K;
    det4=5.0/2.0*K+K*2273.0*2273.0/(exp(2273.0/y[3])-1.0)/(exp(2273.0/y[3])-1.0)/y[3]/y[3];
@@ -681,7 +686,7 @@ void derivada(double t,double *y,double TB, double mp,double k,
    dT2dt=0.0;
 
 
-   dpgdt=Rg/(v-b)*dTdt+(-Rg*y[3]/pow(v-b,2.0)+2.0*a/pow(v,3.0))*dvdt+Rg*y[3]/pow(v-b,2.0)*dbdt-1.0/v/v*dadt;
+   dpgdt=Rg/(v-b)*dTdt+(-Rg*y[3]/pow_(v-b,2.0)+2.0*a/pow_(v,3.0))*dvdt+Rg*y[3]/pow_(v-b,2.0)*dbdt-1.0/v/v*dadt;
 
    dpg2dt=Rg/(v-b)*dT2dt;
 
@@ -742,7 +747,7 @@ void derivada(double t,double *y,double TB, double mp,double k,
       sum=0.0;
       while(cont<=NCh){
          sum=sum+aux*y[6+cont];
-         aux=pow(-1,cont)*(fabs(aux)+(2*cont+1)*4.0);
+         aux=pow_(-1,cont)*(fabs(aux)+(2*cont+1)*4.0);
          cont=cont+1;
       }
 
@@ -853,8 +858,8 @@ void derivada(double t,double *y,double TB, double mp,double k,
 
       dnpdt=dntdt/V-4.0*3.14159*ntot*y[1]*y[1]*y[2]/V/V;
 
-      dlandadt=4.0*3.14159*y[1]*y[1]*y[2]/(sqrt(2.0)*sigmap*ntot)-
-			 V/(sqrt(2.0)*sigmap*ntot*ntot)*dntdt;
+      dlandadt=4.0*3.14159*y[1]*y[1]*y[2]/(sqrt_(2.0)*sigmap*ntot)-
+			 V/(sqrt_(2.0)*sigmap*ntot*ntot)*dntdt;
 
 
       if(modelo == 1){
@@ -870,13 +875,13 @@ void derivada(double t,double *y,double TB, double mp,double k,
          dlth2dt=0.0;
       }
       else{
-         if((y[1]/pi)<(sqrt(y[1]*Xi/fabs(y[2])))){
+         if((y[1]/pi)<(sqrt_(y[1]*Xi/fabs(y[2])))){
             dlth1dt=y[2]/pi;
             dlth2dt=0.0;
          }
          else{
-            dlth1dt=0.5*sqrt(Xi/y[1]/y[2])*y[2];
-            dlth2dt=-0.5*sqrt(y[1]*Xi/y[2]/y[2]/y[2]);
+            dlth1dt=0.5*sqrt_(Xi/y[1]/y[2])*y[2];
+            dlth2dt=-0.5*sqrt_(y[1]*Xi/y[2]/y[2]/y[2]);
          }
 
       }
@@ -920,14 +925,14 @@ void derivada(double t,double *y,double TB, double mp,double k,
       }
 
 
-      dTB1dt=(dydt[5]-(2.0-ap*alfae)/2.0/K/alfae*sqrt(pi/2.0/K)*(-1.0/np/np*dnpdt*sqrt(m/TB)*qpp+
-			1.0/2.0/np*sqrt(1.0/m/TB)*dmdt*qpp+1.0/np*sqrt(m/TB)*dq1dt))/
-			(1.0+(2.0-ap*alfae)/2.0/K/alfae*sqrt(pi/2.0/K)*
-			(-1.0/2.0/np*sqrt(m/TB/TB/TB)*qpp+1.0/np*sqrt(m/TB)*dqdTB));
+      dTB1dt=(dydt[5]-(2.0-ap*alfae)/2.0/K/alfae*sqrt_(pi/2.0/K)*(-1.0/np/np*dnpdt*sqrt_(m/TB)*qpp+
+			1.0/2.0/np*sqrt_(1.0/m/TB)*dmdt*qpp+1.0/np*sqrt_(m/TB)*dq1dt))/
+			(1.0+(2.0-ap*alfae)/2.0/K/alfae*sqrt_(pi/2.0/K)*
+			(-1.0/2.0/np*sqrt_(m/TB/TB/TB)*qpp+1.0/np*sqrt_(m/TB)*dqdTB));
 
-      dTB2dt=-(2.0-ap*alfae)/2.0/K/alfae*sqrt(pi/2.0/K)/np*sqrt(m/TB)*dq2dt/
-		  (1.0+(2.0-ap*alfae)/2.0/K/alfae*sqrt(pi/2.0/K)*
-			(-1.0/2.0/np*sqrt(m/TB/TB/TB)*qpp+1.0/np*sqrt(m/TB)*dqdTB));
+      dTB2dt=-(2.0-ap*alfae)/2.0/K/alfae*sqrt_(pi/2.0/K)/np*sqrt_(m/TB)*dq2dt/
+		  (1.0+(2.0-ap*alfae)/2.0/K/alfae*sqrt_(pi/2.0/K)*
+			(-1.0/2.0/np*sqrt_(m/TB/TB/TB)*qpp+1.0/np*sqrt_(m/TB)*dqdTB));
 
       dpv1dt=(1.0-y[Nvar2+6]/ntot)*pg/ntot*dntdt+y[Nvar2+6]/ntot*dpgdt;
 
@@ -936,26 +941,27 @@ void derivada(double t,double *y,double TB, double mp,double k,
 
 
       if(rapidez ==1){
-         mpp1=alfaM/sqrt(2.0*pi*Rv)*(dpvapdt/sqrt(y[5])-0.5*pvap/pow(y[5],1.5)*dydt[5]-
-			1.0/sqrt(TB)*dpv1dt+0.5*pv/pow(TB,1.5)*dTB1dt);
 
-         mpp2=alfaM/sqrt(2.0*pi*Rv)*(-1.0/sqrt(TB)*dpv2dt+0.5*pv/pow(TB,1.5)*dTB2dt);
+         mpp1=alfaM/sqrt_(2.0*pi*Rv)*(dpvapdt/sqrt_(y[5])-0.5*pvap/pow_(y[5],1.5)*dydt[5]-
+			1.0/sqrt_(TB)*dpv1dt+0.5*pv/pow_(TB,1.5)*dTB1dt);
+
+         mpp2=alfaM/sqrt_(2.0*pi*Rv)*(-1.0/sqrt_(TB)*dpv2dt+0.5*pv/pow_(TB,1.5)*dTB2dt);
       }
       else{
-         Omega=mp/pv*sqrt(Rv*y[3]/2.0);
+         Omega=mp/pv*sqrt_(Rv*y[3]/2.0);
 
-         Gama=exp(-Omega*Omega)-Omega*sqrt(3.14159)*(1.0-erf(Omega,N));
+         Gama=exp(-Omega*Omega)-Omega*sqrt_(3.14159)*(1.0-erf(Omega,N));
 
-         mpp1=alfaM/sqrt(2.0*pi*Rv)*(dpvapdt/sqrt(y[5])-0.5*pvap/pow(y[5],1.5)*dydt[5]-
-			mp/pv*(1.0-erf(Omega,N))*dpv1dt*sqrt(pi*Rv*y[3]/2.0/TB)+
-			0.5*mp*(1.0-erf(Omega,N))*sqrt(pi*Rv/2.0/TB/y[3])*dTdt-
-			Gama/sqrt(TB)*dpv1dt+0.5*Gama*pv/pow(TB,1.5)*dTB1dt)/
-			(1.0-alfaM/2.0*(1.0-erf(Omega,N))*sqrt(y[3]/TB));
+         mpp1=alfaM/sqrt_(2.0*pi*Rv)*(dpvapdt/sqrt_(y[5])-0.5*pvap/pow_(y[5],1.5)*dydt[5]-
+			mp/pv*(1.0-erf(Omega,N))*dpv1dt*sqrt_(pi*Rv*y[3]/2.0/TB)+
+			0.5*mp*(1.0-erf(Omega,N))*sqrt_(pi*Rv/2.0/TB/y[3])*dTdt-
+			Gama/sqrt_(TB)*dpv1dt+0.5*Gama*pv/pow_(TB,1.5)*dTB1dt)/
+			(1.0-alfaM/2.0*(1.0-erf(Omega,N))*sqrt_(y[3]/TB));
 
-         mpp2=alfaM/sqrt(2.0*pi*Rv)*(-mp/pv*(1.0-erf(Omega,N))*dpv2dt*sqrt(pi*Rv*y[3]/
-			2.0/TB)+0.5*mp*(1.0-erf(Omega,N))*sqrt(pi*Rv/2.0/TB/y[3])*dT2dt-
-			Gama/sqrt(TB)*dpv2dt+0.5*Gama*pv/pow(TB,1.5)*dTB2dt)/
-			(1.0-alfaM/2.0*(1.0-erf(Omega,N))*sqrt(y[3]/TB));
+         mpp2=alfaM/sqrt_(2.0*pi*Rv)*(-mp/pv*(1.0-erf(Omega,N))*dpv2dt*sqrt_(pi*Rv*y[3]/
+			2.0/TB)+0.5*mp*(1.0-erf(Omega,N))*sqrt_(pi*Rv/2.0/TB/y[3])*dT2dt-
+			Gama/sqrt_(TB)*dpv2dt+0.5*Gama*pv/pow_(TB,1.5)*dTB2dt)/
+			(1.0-alfaM/2.0*(1.0-erf(Omega,N))*sqrt_(y[3]/TB));
       }
 
    }
@@ -988,7 +994,7 @@ void derivada(double t,double *y,double TB, double mp,double k,
    dydt[NCh3+NumEsp]=y[NCh3+1+NumEsp];
 
    dydt[NCh3+1+NumEsp]=-y[NCh3+1+NumEsp]*(3.0*y[2]/y[1]+2.0*(nn+2.0)*(2.0*nn+1.0)*nu/y[1]/y[1])-
-                       y[NCh3+NumEsp]*(nn-1.0)*((nn+1.0)*(nn+2.0)*sigma/rol/pow(y[1],3.0)+
+                       y[NCh3+NumEsp]*(nn-1.0)*((nn+1.0)*(nn+2.0)*sigma/rol/pow_(y[1],3.0)+
                        2.0*(nn+2.0)*nu*y[2]/y[1]/y[1]/y[1]-dydt[2]/y[1])+
                        Ppert*sin(w*t)/rol/y[1];
 

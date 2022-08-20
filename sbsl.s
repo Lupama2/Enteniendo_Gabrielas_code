@@ -118,8 +118,10 @@ _ZSt12setprecisioni:
 	.ascii "Rmax\0"
 .LC53:
 	.ascii "Ri\0"
+.LC64:
+	.ascii "t =  \0"
 .LC65:
-	.ascii "termine\0"
+	.ascii "\11termine\0"
 	.text
 	.globl	main
 	.def	main;	.scl	2;	.type	32;	.endef
@@ -323,10 +325,10 @@ main:
 	salq	$3, %rax
 	movq	%rax, %rcx
 	call	_Znay
-	jmp	.L176
+	jmp	.L177
 .L11:
 	call	__cxa_throw_bad_array_new_length
-.L176:
+.L177:
 	movq	%rax, 3888(%rbp)
 	movq	.refptr.Nvar(%rip), %rax
 	movl	(%rax), %eax
@@ -337,10 +339,10 @@ main:
 	salq	$3, %rax
 	movq	%rax, %rcx
 	call	_Znay
-	jmp	.L177
+	jmp	.L178
 .L13:
 	call	__cxa_throw_bad_array_new_length
-.L177:
+.L178:
 	movq	%rax, 3880(%rbp)
 	movq	.refptr.Nvar(%rip), %rax
 	movl	(%rax), %eax
@@ -351,10 +353,10 @@ main:
 	salq	$3, %rax
 	movq	%rax, %rcx
 	call	_Znay
-	jmp	.L178
+	jmp	.L179
 .L15:
 	call	__cxa_throw_bad_array_new_length
-.L178:
+.L179:
 	movq	%rax, 3872(%rbp)
 	movq	.refptr.Nvar(%rip), %rax
 	movl	(%rax), %eax
@@ -365,10 +367,10 @@ main:
 	salq	$3, %rax
 	movq	%rax, %rcx
 	call	_Znay
-	jmp	.L179
+	jmp	.L180
 .L17:
 	call	__cxa_throw_bad_array_new_length
-.L179:
+.L180:
 	movq	%rax, 3864(%rbp)
 	movl	$80, %ecx
 	call	_Znay
@@ -382,10 +384,10 @@ main:
 	salq	$3, %rax
 	movq	%rax, %rcx
 	call	_Znay
-	jmp	.L180
+	jmp	.L181
 .L19:
 	call	__cxa_throw_bad_array_new_length
-.L180:
+.L181:
 	movq	%rax, 3848(%rbp)
 	movq	.refptr.Nsalida(%rip), %rax
 	movl	(%rax), %eax
@@ -396,10 +398,10 @@ main:
 	salq	$3, %rax
 	movq	%rax, %rcx
 	call	_Znay
-	jmp	.L181
+	jmp	.L182
 .L21:
 	call	__cxa_throw_bad_array_new_length
-.L181:
+.L182:
 	movq	%rax, 3840(%rbp)
 	movq	.refptr.Nsalida(%rip), %rax
 	movl	(%rax), %eax
@@ -410,10 +412,10 @@ main:
 	salq	$3, %rax
 	movq	%rax, %rcx
 	call	_Znay
-	jmp	.L182
+	jmp	.L183
 .L23:
 	call	__cxa_throw_bad_array_new_length
-.L182:
+.L183:
 	movq	%rax, 3832(%rbp)
 	movq	.refptr.Nsalida(%rip), %rax
 	movl	(%rax), %eax
@@ -424,10 +426,10 @@ main:
 	salq	$3, %rax
 	movq	%rax, %rcx
 	call	_Znay
-	jmp	.L183
+	jmp	.L184
 .L25:
 	call	__cxa_throw_bad_array_new_length
-.L183:
+.L184:
 	movq	%rax, 3824(%rbp)
 	movq	.refptr.NumEsp(%rip), %rax
 	movl	(%rax), %eax
@@ -441,10 +443,10 @@ main:
 	salq	$3, %rax
 	movq	%rax, %rcx
 	call	_Znay
-	jmp	.L184
+	jmp	.L185
 .L27:
 	call	__cxa_throw_bad_array_new_length
-.L184:
+.L185:
 	movq	%rax, 3808(%rbp)
 	movl	3820(%rbp), %eax
 	cltq
@@ -454,10 +456,10 @@ main:
 	salq	$3, %rax
 	movq	%rax, %rcx
 	call	_Znay
-	jmp	.L185
+	jmp	.L186
 .L29:
 	call	__cxa_throw_bad_array_new_length
-.L185:
+.L186:
 	movq	%rax, 3800(%rbp)
 	movl	3820(%rbp), %eax
 	cltq
@@ -467,10 +469,10 @@ main:
 	salq	$3, %rax
 	movq	%rax, %rcx
 	call	_Znay
-	jmp	.L186
+	jmp	.L187
 .L31:
 	call	__cxa_throw_bad_array_new_length
-.L186:
+.L187:
 	movq	%rax, 3792(%rbp)
 	movl	$80, %ecx
 	call	_Znay
@@ -488,10 +490,10 @@ main:
 	salq	$3, %rax
 	movq	%rax, %rcx
 	call	_Znay
-	jmp	.L187
+	jmp	.L188
 .L33:
 	call	__cxa_throw_bad_array_new_length
-.L187:
+.L188:
 	movq	%rax, 3768(%rbp)
 	movq	.refptr.NCh2(%rip), %rax
 	movl	(%rax), %eax
@@ -502,10 +504,10 @@ main:
 	salq	$3, %rax
 	movq	%rax, %rcx
 	call	_Znay
-	jmp	.L188
+	jmp	.L189
 .L35:
 	call	__cxa_throw_bad_array_new_length
-.L188:
+.L189:
 	movq	%rax, 3760(%rbp)
 	movl	$0, 4168(%rbp)
 .L40:
@@ -527,10 +529,10 @@ main:
 	leaq	(%rcx,%rdx), %rbx
 	movq	%rax, %rcx
 	call	_Znay
-	jmp	.L198
+	jmp	.L199
 .L38:
 	call	__cxa_throw_bad_array_new_length
-.L198:
+.L199:
 	movq	%rax, (%rbx)
 	addl	$1, 4168(%rbp)
 	jmp	.L40
@@ -544,10 +546,10 @@ main:
 	salq	$3, %rax
 	movq	%rax, %rcx
 	call	_Znay
-	jmp	.L190
+	jmp	.L191
 .L41:
 	call	__cxa_throw_bad_array_new_length
-.L190:
+.L191:
 	movq	%rax, 3752(%rbp)
 	movl	$0, 4168(%rbp)
 .L46:
@@ -569,10 +571,10 @@ main:
 	leaq	(%rcx,%rdx), %rbx
 	movq	%rax, %rcx
 	call	_Znay
-	jmp	.L199
+	jmp	.L200
 .L44:
 	call	__cxa_throw_bad_array_new_length
-.L199:
+.L200:
 	movq	%rax, (%rbx)
 	addl	$1, 4168(%rbp)
 	jmp	.L46
@@ -586,10 +588,10 @@ main:
 	salq	$3, %rax
 	movq	%rax, %rcx
 	call	_Znay
-	jmp	.L192
+	jmp	.L193
 .L47:
 	call	__cxa_throw_bad_array_new_length
-.L192:
+.L193:
 	movq	%rax, 3744(%rbp)
 	movl	$0, 4168(%rbp)
 .L52:
@@ -611,10 +613,10 @@ main:
 	leaq	(%rcx,%rdx), %rbx
 	movq	%rax, %rcx
 	call	_Znay
-	jmp	.L200
+	jmp	.L201
 .L50:
 	call	__cxa_throw_bad_array_new_length
-.L200:
+.L201:
 	movq	%rax, (%rbx)
 	addl	$1, 4168(%rbp)
 	jmp	.L52
@@ -628,10 +630,10 @@ main:
 	salq	$3, %rax
 	movq	%rax, %rcx
 	call	_Znay
-	jmp	.L194
+	jmp	.L195
 .L53:
 	call	__cxa_throw_bad_array_new_length
-.L194:
+.L195:
 	movq	%rax, 3736(%rbp)
 	movl	$0, 4168(%rbp)
 .L58:
@@ -653,10 +655,10 @@ main:
 	leaq	(%rcx,%rdx), %rbx
 	movq	%rax, %rcx
 	call	_Znay
-	jmp	.L201
+	jmp	.L202
 .L56:
 	call	__cxa_throw_bad_array_new_length
-.L201:
+.L202:
 	movq	%rax, (%rbx)
 	addl	$1, 4168(%rbp)
 	jmp	.L58
@@ -675,10 +677,10 @@ main:
 	salq	$4, %rax
 	movq	%rax, %rcx
 	call	_Znay
-	jmp	.L196
+	jmp	.L197
 .L59:
 	call	__cxa_throw_bad_array_new_length
-.L196:
+.L197:
 	movq	%rax, 3720(%rbp)
 	movl	$0, 4172(%rbp)
 .L62:
@@ -857,7 +859,7 @@ main:
 	movsd	(%rax), %xmm6
 	movq	4152(%rbp), %rax
 	movq	%rax, %xmm0
-	call	sqrt
+	call	_Z5sqrt_d
 	movl	4164(%rbp), %eax
 	cltq
 	leaq	0(,%rax,8), %rdx
@@ -874,7 +876,7 @@ main:
 	movq	(%rax), %rbx
 	movq	4152(%rbp), %rax
 	movq	%rax, %xmm0
-	call	sqrt
+	call	_Z5sqrt_d
 	movq	%xmm0, %rax
 	movq	%rax, (%rbx)
 	movl	$1, 4168(%rbp)
@@ -1109,7 +1111,7 @@ main:
 	salq	$3, %rax
 	leaq	(%rcx,%rax), %rbx
 	movq	%rdx, %xmm0
-	call	sqrt
+	call	_Z5sqrt_d
 	movq	%xmm0, %rax
 	movq	%rax, (%rbx)
 	movl	$0, 4164(%rbp)
@@ -1246,7 +1248,7 @@ main:
 	movsd	.LC20(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
-	call	pow
+	call	_Z4pow_dd
 	mulsd	%xmm6, %xmm0
 	movq	.refptr.Rg(%rip), %rax
 	movsd	(%rax), %xmm1
@@ -1920,7 +1922,8 @@ main:
 	movq	%rax, %rcx
 	call	_ZNSolsEPFRSoS_E
 	movl	$0, 4072(%rbp)
-.L151:
+	movl	$0, 3960(%rbp)
+.L152:
 	movsd	200(%rbp), %xmm1
 	movsd	3680(%rbp), %xmm0
 	comisd	%xmm1, %xmm0
@@ -1989,7 +1992,7 @@ main:
 	movsd	.LC20(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
-	call	pow
+	call	_Z4pow_dd
 	mulsd	%xmm6, %xmm0
 	movsd	%xmm0, 3648(%rbp)
 	movq	3808(%rbp), %rax
@@ -2282,9 +2285,12 @@ main:
 	movsd	4096(%rbp), %xmm0
 	divsd	4112(%rbp), %xmm0
 	movsd	%xmm0, 3544(%rbp)
+	movq	.LC16(%rip), %rax
+	movq	%rax, %xmm0
+	call	_Z5sqrt_d
+	movapd	%xmm0, %xmm1
 	movq	.refptr.sigmap(%rip), %rax
-	movsd	(%rax), %xmm1
-	movsd	.LC59(%rip), %xmm0
+	movsd	(%rax), %xmm0
 	mulsd	%xmm1, %xmm0
 	movapd	%xmm0, %xmm1
 	mulsd	4112(%rbp), %xmm1
@@ -2359,7 +2365,7 @@ main:
 	movsd	(%rax), %xmm0
 	mulsd	%xmm0, %xmm1
 	movsd	3688(%rbp), %xmm2
-	movsd	.LC60(%rip), %xmm0
+	movsd	.LC59(%rip), %xmm0
 	mulsd	%xmm0, %xmm2
 	movq	.refptr.K(%rip), %rax
 	movsd	(%rax), %xmm0
@@ -2396,10 +2402,10 @@ main:
 	movq	3888(%rbp), %rax
 	addq	$16, %rax
 	movsd	(%rax), %xmm1
-	movq	.LC61(%rip), %xmm2
+	movq	.LC60(%rip), %xmm2
 	andpd	%xmm2, %xmm1
 	divsd	%xmm1, %xmm0
-	call	sqrt
+	call	_Z5sqrt_d
 	comisd	%xmm6, %xmm0
 	seta	%al
 	testb	%al, %al
@@ -2418,10 +2424,10 @@ main:
 	movq	3888(%rbp), %rax
 	addq	$16, %rax
 	movsd	(%rax), %xmm1
-	movq	.LC61(%rip), %xmm2
+	movq	.LC60(%rip), %xmm2
 	andpd	%xmm2, %xmm1
 	divsd	%xmm1, %xmm0
-	call	sqrt
+	call	_Z5sqrt_d
 	movq	%xmm0, %rax
 	movq	%rax, 4080(%rbp)
 .L119:
@@ -2501,7 +2507,7 @@ main:
 	js	.L124
 	movl	4168(%rbp), %eax
 	addl	%eax, %eax
-	movq	.LC62(%rip), %rcx
+	movq	.LC61(%rip), %rcx
 	movl	%eax, %edx
 	movq	%rcx, %xmm0
 	call	_Z8DerPChebdi
@@ -2559,7 +2565,7 @@ main:
 	jle	.L127
 	movl	4168(%rbp), %eax
 	addl	%eax, %eax
-	movq	.LC62(%rip), %rcx
+	movq	.LC61(%rip), %rcx
 	movl	%eax, %edx
 	movq	%rcx, %xmm0
 	call	_Z8DerPChebdi
@@ -2765,7 +2771,7 @@ main:
 	movsd	(%rax), %xmm6
 	movq	.refptr.Rv(%rip), %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC63(%rip), %xmm0
+	movsd	.LC62(%rip), %xmm0
 	mulsd	%xmm1, %xmm0
 	call	sqrt
 	movapd	%xmm6, %xmm7
@@ -3231,7 +3237,7 @@ main:
 	js	.L135
 	movl	4168(%rbp), %eax
 	addl	%eax, %eax
-	movq	.LC62(%rip), %rcx
+	movq	.LC61(%rip), %rcx
 	movl	%eax, %edx
 	movq	%rcx, %xmm0
 	call	_Z8DerPChebdi
@@ -3291,7 +3297,7 @@ main:
 	jle	.L138
 	movl	4168(%rbp), %eax
 	addl	%eax, %eax
-	movq	.LC62(%rip), %rcx
+	movq	.LC61(%rip), %rcx
 	movl	%eax, %edx
 	movq	%rcx, %xmm0
 	call	_Z8DerPChebdi
@@ -3513,7 +3519,7 @@ main:
 	movq	3888(%rbp), %rax
 	addq	%rdx, %rax
 	movsd	(%rax), %xmm0
-	movq	.LC61(%rip), %xmm1
+	movq	.LC60(%rip), %xmm1
 	andpd	%xmm0, %xmm1
 	movl	4172(%rbp), %eax
 	cltq
@@ -3521,7 +3527,7 @@ main:
 	movq	3864(%rbp), %rax
 	addq	%rdx, %rax
 	movsd	(%rax), %xmm0
-	movq	.LC61(%rip), %xmm2
+	movq	.LC60(%rip), %xmm2
 	andpd	%xmm0, %xmm2
 	movsd	192(%rbp), %xmm0
 	mulsd	%xmm2, %xmm0
@@ -3540,7 +3546,7 @@ main:
 	movq	.refptr.Nvar(%rip), %rax
 	movl	(%rax), %eax
 	cmpl	%eax, 4172(%rbp)
-	jge	.L151
+	jge	.L147
 	movl	4172(%rbp), %eax
 	cltq
 	leaq	0(,%rax,8), %rdx
@@ -3558,11 +3564,38 @@ main:
 	leaq	0(,%rax,8), %rdx
 	movq	3864(%rbp), %rax
 	addq	%rdx, %rax
-	movsd	.LC64(%rip), %xmm0
+	movsd	.LC63(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 .L148:
 	addl	$1, 4172(%rbp)
 	jmp	.L150
+.L147:
+	addl	$1, 3960(%rbp)
+	movl	3960(%rbp), %ecx
+	movl	$274877907, %edx
+	movl	%ecx, %eax
+	imull	%edx
+	sarl	$6, %edx
+	movl	%ecx, %eax
+	sarl	$31, %eax
+	subl	%eax, %edx
+	movl	%edx, %eax
+	imull	$1000, %eax, %eax
+	subl	%eax, %ecx
+	movl	%ecx, %eax
+	testl	%eax, %eax
+	jne	.L152
+	leaq	.LC64(%rip), %rdx
+	movq	.refptr._ZSt4cout(%rip), %rcx
+	call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
+	movsd	200(%rbp), %xmm0
+	movapd	%xmm0, %xmm1
+	movq	%rax, %rcx
+	call	_ZNSolsEd
+	movq	.refptr._ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_(%rip), %rdx
+	movq	%rax, %rcx
+	call	_ZNSolsEPFRSoS_E
+	jmp	.L152
 .L104:
 	movq	3888(%rbp), %rax
 	movl	$8, %edx
@@ -3639,7 +3672,7 @@ main:
 	movq	.refptr.iespectro(%rip), %rax
 	movl	(%rax), %eax
 	cmpl	$6, %eax
-	jne	.L152
+	jne	.L153
 	movl	$12, %ecx
 	call	_ZSt12setprecisioni
 	movl	%eax, %edx
@@ -3655,19 +3688,19 @@ main:
 	movq	.refptr._ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_(%rip), %rdx
 	movq	%rax, %rcx
 	call	_ZNSolsEPFRSoS_E
-.L152:
+.L153:
 	movq	.refptr.iespectro(%rip), %rax
 	movl	(%rax), %eax
 	cmpl	$6, %eax
-	jne	.L153
+	jne	.L154
 	movl	$0, 4172(%rbp)
-.L154:
+.L155:
 	movq	.refptr.lambdapuntos(%rip), %rax
 	fldt	(%rax)
 	fisttpl	12(%rbp)
 	movl	12(%rbp), %eax
 	cmpl	%eax, 4172(%rbp)
-	jg	.L153
+	jg	.L154
 	movl	$12, %ecx
 	call	_ZSt12setprecisioni
 	movl	%eax, %edx
@@ -3710,12 +3743,12 @@ main:
 	movq	%rax, %rcx
 	call	_ZNSolsEPFRSoS_E
 	addl	$1, 4172(%rbp)
-	jmp	.L154
-.L153:
+	jmp	.L155
+.L154:
 	movq	.refptr.iespectro(%rip), %rax
 	movl	(%rax), %eax
 	cmpl	$6, %eax
-	jne	.L155
+	jne	.L156
 	fldt	3984(%rbp)
 	fstpt	160(%rbp)
 	leaq	160(%rbp), %rdx
@@ -3725,9 +3758,13 @@ main:
 	movq	.refptr._ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_(%rip), %rdx
 	movq	%rax, %rcx
 	call	_ZNSolsEPFRSoS_E
-.L155:
-	leaq	.LC65(%rip), %rdx
+.L156:
+	movsd	200(%rbp), %xmm0
+	movapd	%xmm0, %xmm1
 	movq	.refptr._ZSt4cout(%rip), %rcx
+	call	_ZNSolsEd
+	leaq	.LC65(%rip), %rdx
+	movq	%rax, %rcx
 	call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
 	movq	.refptr._ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_(%rip), %rdx
 	movq	%rax, %rcx
@@ -3778,51 +3815,51 @@ main:
 	movq	%rax, %rcx
 	call	_ZNSt14basic_ofstreamIcSt11char_traitsIcEED1Ev
 	movl	%ebx, %eax
-	jmp	.L197
-.L170:
+	jmp	.L198
+.L171:
 	movq	%rax, %rbx
 	leaq	208(%rbp), %rax
 	movq	%rax, %rcx
 	call	_ZNSt14basic_ofstreamIcSt11char_traitsIcEED1Ev
-	jmp	.L158
-.L169:
+	jmp	.L159
+.L170:
 	movq	%rax, %rbx
-.L158:
+.L159:
 	leaq	672(%rbp), %rax
 	movq	%rax, %rcx
 	call	_ZNSt14basic_ofstreamIcSt11char_traitsIcEED1Ev
-	jmp	.L159
-.L168:
+	jmp	.L160
+.L169:
 	movq	%rax, %rbx
-.L159:
+.L160:
 	leaq	1136(%rbp), %rax
 	movq	%rax, %rcx
 	call	_ZNSt14basic_ofstreamIcSt11char_traitsIcEED1Ev
-	jmp	.L160
-.L167:
+	jmp	.L161
+.L168:
 	movq	%rax, %rbx
-.L160:
+.L161:
 	leaq	1600(%rbp), %rax
 	movq	%rax, %rcx
 	call	_ZNSt14basic_ofstreamIcSt11char_traitsIcEED1Ev
-	jmp	.L161
-.L166:
+	jmp	.L162
+.L167:
 	movq	%rax, %rbx
-.L161:
+.L162:
 	leaq	2064(%rbp), %rax
 	movq	%rax, %rcx
 	call	_ZNSt14basic_ofstreamIcSt11char_traitsIcEED1Ev
-	jmp	.L162
-.L165:
+	jmp	.L163
+.L166:
 	movq	%rax, %rbx
-.L162:
+.L163:
 	leaq	2528(%rbp), %rax
 	movq	%rax, %rcx
 	call	_ZNSt14basic_ofstreamIcSt11char_traitsIcEED1Ev
-	jmp	.L163
-.L164:
+	jmp	.L164
+.L165:
 	movq	%rax, %rbx
-.L163:
+.L164:
 	leaq	2992(%rbp), %rax
 	movq	%rax, %rcx
 	call	_ZNSt14basic_ofstreamIcSt11char_traitsIcEED1Ev
@@ -3831,7 +3868,7 @@ main:
 .LEHB8:
 	call	_Unwind_Resume
 .LEHE8:
-.L197:
+.L198:
 	movaps	4176(%rbp), %xmm6
 	movaps	4192(%rbp), %xmm7
 	addq	$4344, %rsp
@@ -3853,31 +3890,31 @@ main:
 	.uleb128 0
 	.uleb128 .LEHB1-.LFB2463
 	.uleb128 .LEHE1-.LEHB1
-	.uleb128 .L164-.LFB2463
+	.uleb128 .L165-.LFB2463
 	.uleb128 0
 	.uleb128 .LEHB2-.LFB2463
 	.uleb128 .LEHE2-.LEHB2
-	.uleb128 .L165-.LFB2463
+	.uleb128 .L166-.LFB2463
 	.uleb128 0
 	.uleb128 .LEHB3-.LFB2463
 	.uleb128 .LEHE3-.LEHB3
-	.uleb128 .L166-.LFB2463
+	.uleb128 .L167-.LFB2463
 	.uleb128 0
 	.uleb128 .LEHB4-.LFB2463
 	.uleb128 .LEHE4-.LEHB4
-	.uleb128 .L167-.LFB2463
+	.uleb128 .L168-.LFB2463
 	.uleb128 0
 	.uleb128 .LEHB5-.LFB2463
 	.uleb128 .LEHE5-.LEHB5
-	.uleb128 .L168-.LFB2463
+	.uleb128 .L169-.LFB2463
 	.uleb128 0
 	.uleb128 .LEHB6-.LFB2463
 	.uleb128 .LEHE6-.LEHB6
-	.uleb128 .L169-.LFB2463
+	.uleb128 .L170-.LFB2463
 	.uleb128 0
 	.uleb128 .LEHB7-.LFB2463
 	.uleb128 .LEHE7-.LEHB7
-	.uleb128 .L170-.LFB2463
+	.uleb128 .L171-.LFB2463
 	.uleb128 0
 	.uleb128 .LEHB8-.LFB2463
 	.uleb128 .LEHE8-.LEHB8
@@ -3918,14 +3955,14 @@ _Z41__static_initialization_and_destruction_0ii:
 	movl	%ecx, 16(%rbp)
 	movl	%edx, 24(%rbp)
 	cmpl	$1, 16(%rbp)
-	jne	.L205
+	jne	.L206
 	cmpl	$65535, 24(%rbp)
-	jne	.L205
+	jne	.L206
 	leaq	_ZStL8__ioinit(%rip), %rcx
 	call	_ZNSt8ios_base4InitC1Ev
 	leaq	__tcf_0(%rip), %rcx
 	call	atexit
-.L205:
+.L206:
 	nop
 	addq	$32, %rsp
 	popq	%rbp
@@ -4022,28 +4059,24 @@ _GLOBAL__sub_I_main:
 	.long	0
 	.align 8
 .LC59:
-	.long	1719614413
-	.long	1073127582
-	.align 8
-.LC60:
 	.long	0
 	.long	1074003968
 	.align 16
-.LC61:
+.LC60:
 	.long	-1
 	.long	2147483647
 	.long	0
 	.long	0
 	.align 8
-.LC62:
+.LC61:
 	.long	0
 	.long	1072693248
 	.align 8
-.LC63:
+.LC62:
 	.long	-266631570
 	.long	1075388921
 	.align 8
-.LC64:
+.LC63:
 	.long	0
 	.long	1104006501
 	.ident	"GCC: (x86_64-posix-seh, Built by strawberryperl.com project) 8.3.0"
@@ -4057,8 +4090,8 @@ _GLOBAL__sub_I_main:
 	.def	__cxa_throw_bad_array_new_length;	.scl	2;	.type	32;	.endef
 	.def	cos;	.scl	2;	.type	32;	.endef
 	.def	_Z7PolChebdi;	.scl	2;	.type	32;	.endef
-	.def	sqrt;	.scl	2;	.type	32;	.endef
-	.def	pow;	.scl	2;	.type	32;	.endef
+	.def	_Z5sqrt_d;	.scl	2;	.type	32;	.endef
+	.def	_Z4pow_dd;	.scl	2;	.type	32;	.endef
 	.def	kbhit;	.scl	2;	.type	32;	.endef
 	.def	sin;	.scl	2;	.type	32;	.endef
 	.def	_Z9MasaMolarPd;	.scl	2;	.type	32;	.endef
@@ -4072,6 +4105,7 @@ _GLOBAL__sub_I_main:
 	.def	_Z10calculaTBTddddddddd;	.scl	2;	.type	32;	.endef
 	.def	_Z8DerPChebdi;	.scl	2;	.type	32;	.endef
 	.def	_Z11calculaTBHPddddddd;	.scl	2;	.type	32;	.endef
+	.def	sqrt;	.scl	2;	.type	32;	.endef
 	.def	_Z9calculampddddddddi;	.scl	2;	.type	32;	.endef
 	.def	_Z8derivadadPddddS_PS_S0_S_;	.scl	2;	.type	32;	.endef
 	.def	_Z4rkqcPdS_S_ddS_S_S_dddS_PS_S0_S_;	.scl	2;	.type	32;	.endef

@@ -38,7 +38,8 @@ long double lambdapuntos,TempCorte,CTR,DTR,EION,E2,Z;
 double t1,t2,t5,t6,t15,t16,t33,t34,t39;
 double Ppert,Rpert,Vpert;
 
-
+double pow_(double x, double y);
+double sqrt_(double x);
 
 void parametros(){
 
@@ -199,8 +200,8 @@ void parametros(){
 
 
    //Computed Values
-   a_Arh2o=sqrt(a_Ar*a_h2o); //VW gas-vapor
-   b_Arh2o=pow(0.5*(pow(b_Ar,1.0/3.0)+pow(b_h2o,1.0/3.0)),3.0); //VW gas-vapor
+   a_Arh2o=sqrt_(a_Ar*a_h2o); //VW gas-vapor
+   b_Arh2o=pow_(0.5*(pow_(b_Ar,1.0/3.0)+pow_(b_h2o,1.0/3.0)),3.0); //VW gas-vapor
 
    //Limits
    Tmin=200.0; //Minimum temperature para el calculo de biseccion [K]
@@ -345,8 +346,8 @@ void parametros(){
    //aAr=0.106e-9; %effective atomic diameter Ar (covalente)
    //aH=0.031e-9; %effective atomic diameter H (covalente)
 
-   //DTR=-0.6e-20*pow((0.031e-9/0.106e-9),2);
-   //CTR=1.6e-20/1.6e-19*pow((0.031e-9/0.106e-9),2);
+   //DTR=-0.6e-20*pow_((0.031e-9/0.106e-9),2);
+   //CTR=1.6e-20/1.6e-19*pow_((0.031e-9/0.106e-9),2);
 
    DTR=-0.6e-20;
    CTR=1.6e-20/1.6e-19;

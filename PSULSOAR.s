@@ -1028,26 +1028,26 @@ _Z10parametrosv:
 	movsd	a_Ar(%rip), %xmm1
 	movsd	a_h2o(%rip), %xmm0
 	mulsd	%xmm1, %xmm0
-	call	sqrt
+	call	_Z5sqrt_d
 	movq	%xmm0, %rax
 	movq	%rax, a_Arh2o(%rip)
 	movq	b_Ar(%rip), %rax
 	movsd	.LC52(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
-	call	pow
+	call	_Z4pow_dd
 	movapd	%xmm0, %xmm6
 	movq	b_h2o(%rip), %rax
 	movsd	.LC52(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
-	call	pow
+	call	_Z4pow_dd
 	addsd	%xmm0, %xmm6
 	movapd	%xmm6, %xmm1
 	movsd	.LC53(%rip), %xmm0
 	mulsd	%xmm1, %xmm0
 	movsd	.LC29(%rip), %xmm1
-	call	pow
+	call	_Z4pow_dd
 	movq	%xmm0, %rax
 	movq	%rax, b_Arh2o(%rip)
 	movsd	.LC54(%rip), %xmm0
@@ -1769,5 +1769,5 @@ _Z10parametrosv:
 	.long	1085494528
 	.ident	"GCC: (x86_64-posix-seh, Built by strawberryperl.com project) 8.3.0"
 	.def	exp;	.scl	2;	.type	32;	.endef
-	.def	sqrt;	.scl	2;	.type	32;	.endef
-	.def	pow;	.scl	2;	.type	32;	.endef
+	.def	_Z5sqrt_d;	.scl	2;	.type	32;	.endef
+	.def	_Z4pow_dd;	.scl	2;	.type	32;	.endef

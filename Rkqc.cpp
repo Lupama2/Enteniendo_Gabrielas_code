@@ -8,6 +8,7 @@
 #define ERRCON 6.0e-4
 
 
+
 void derivada(double t,double *y,double TB, double mp,double k,
 				  double *colpoints,double **Q,double **R, double *dydt);
 
@@ -74,14 +75,16 @@ void rkqc(double *y,double *dydx,double *x,double htry,double eps,double *yscal,
       }	/*for*/
 
       errmax= errmax/eps;
-
+      
       if (errmax <= 1.0){
+
          *hdid=h;
          *hnext=(errmax > ERRCON ? SAFETY*h*exp(PGROW*log(errmax)) : 4.0*h);
 
          break;
 
       }	/*if*/
+
 
       h=SAFETY*h*exp(PSHRNK*log(errmax));
 
