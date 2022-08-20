@@ -4029,8 +4029,8 @@ _GLOBAL__sub_I_main:
 	.long	1070945621
 	.align 8
 .LC25:
-	.long	-1917273401
-	.long	1061613574
+	.long	824633721
+	.long	1065135112
 	.align 8
 .LC54:
 	.long	0
