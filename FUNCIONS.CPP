@@ -11,30 +11,29 @@ using namespace std;
 
 
 double pow_(double x, double y){
-   if(x < 0.0 && y != int(y)){
-      cout << "Error " << endl;
-      return 0;
-   }
-   if(x == 0.0 && y == 0.0){
-      cout << "Error " << endl;
-      return 0;
-   }
+   // if(x < 0.0 && y != int(y)){
+   //    cout << "Error " << endl;
+   //    return 0;
+   // }
+   // if(x == 0.0 && y == 0.0){
+   //    cout << "Error " << endl;
+   //    return 0;
+   // }
 
-
-   if(x == 0 && y < 0.0){
-      cout << "Error " << endl;
-      return 0;
-   }
+   // if(x == 0 && y < 0.0){
+   //    cout << "Error " << endl;
+   //    return 0;
+   // }
    return pow(x,y);
 
 }
 
 
 double sqrt_(double x){
-   if(x < 0.0){
-      cout << endl << "Error: " << x << endl;
-      return sqrt(-x);
-   }
+   // if(x < 0.0){
+   //    cout << endl << "Error: " << x << endl;
+   //    return sqrt(-x);
+   // }
    return sqrt(x);
    
 }

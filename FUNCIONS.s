@@ -4,8 +4,6 @@
 _ZStL19piecewise_construct:
 	.space 1
 .lcomm _ZStL8__ioinit,1,1
-.LC1:
-	.ascii "Error \0"
 	.text
 	.globl	_Z4pow_dd
 	.def	_Z4pow_dd;	.scl	2;	.type	32;	.endef
@@ -21,81 +19,16 @@ _Z4pow_dd:
 	.seh_endprologue
 	movsd	%xmm0, 16(%rbp)
 	movsd	%xmm1, 24(%rbp)
-	pxor	%xmm0, %xmm0
-	comisd	16(%rbp), %xmm0
-	jbe	.L2
-	movsd	24(%rbp), %xmm0
-	cvttsd2si	%xmm0, %eax
-	cvtsi2sd	%eax, %xmm0
-	ucomisd	24(%rbp), %xmm0
-	jp	.L13
-	ucomisd	24(%rbp), %xmm0
-	je	.L2
-.L13:
-	leaq	.LC1(%rip), %rdx
-	movq	.refptr._ZSt4cout(%rip), %rcx
-	call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
-	movq	.refptr._ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_(%rip), %rdx
-	movq	%rax, %rcx
-	call	_ZNSolsEPFRSoS_E
-	movq	.LC0(%rip), %rax
-	jmp	.L5
-.L2:
-	pxor	%xmm0, %xmm0
-	ucomisd	16(%rbp), %xmm0
-	jp	.L6
-	pxor	%xmm0, %xmm0
-	ucomisd	16(%rbp), %xmm0
-	jne	.L6
-	pxor	%xmm0, %xmm0
-	ucomisd	24(%rbp), %xmm0
-	jp	.L6
-	pxor	%xmm0, %xmm0
-	ucomisd	24(%rbp), %xmm0
-	jne	.L6
-	leaq	.LC1(%rip), %rdx
-	movq	.refptr._ZSt4cout(%rip), %rcx
-	call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
-	movq	.refptr._ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_(%rip), %rdx
-	movq	%rax, %rcx
-	call	_ZNSolsEPFRSoS_E
-	movq	.LC0(%rip), %rax
-	jmp	.L5
-.L6:
-	pxor	%xmm0, %xmm0
-	ucomisd	16(%rbp), %xmm0
-	jp	.L9
-	pxor	%xmm0, %xmm0
-	ucomisd	16(%rbp), %xmm0
-	jne	.L9
-	pxor	%xmm0, %xmm0
-	comisd	24(%rbp), %xmm0
-	jbe	.L9
-	leaq	.LC1(%rip), %rdx
-	movq	.refptr._ZSt4cout(%rip), %rcx
-	call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
-	movq	.refptr._ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_(%rip), %rdx
-	movq	%rax, %rcx
-	call	_ZNSolsEPFRSoS_E
-	movq	.LC0(%rip), %rax
-	jmp	.L5
-.L9:
 	movsd	24(%rbp), %xmm0
 	movapd	%xmm0, %xmm1
 	movsd	16(%rbp), %xmm0
 	call	pow
 	movq	%xmm0, %rax
-	nop
-.L5:
 	movq	%rax, %xmm0
 	addq	$32, %rsp
 	popq	%rbp
 	ret
 	.seh_endproc
-	.section .rdata,"dr"
-.LC2:
-	.ascii "Error: \0"
-	.text
 	.globl	_Z5sqrt_d
 	.def	_Z5sqrt_d;	.scl	2;	.type	32;	.endef
 	.seh_proc	_Z5sqrt_d
@@ -109,33 +42,9 @@ _Z5sqrt_d:
 	.seh_stackalloc	32
 	.seh_endprologue
 	movsd	%xmm0, 16(%rbp)
-	pxor	%xmm0, %xmm0
-	comisd	16(%rbp), %xmm0
-	jbe	.L23
-	movq	.refptr._ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_(%rip), %rdx
-	movq	.refptr._ZSt4cout(%rip), %rcx
-	call	_ZNSolsEPFRSoS_E
-	leaq	.LC2(%rip), %rdx
-	movq	%rax, %rcx
-	call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
-	movsd	16(%rbp), %xmm1
-	movq	%rax, %rcx
-	call	_ZNSolsEd
-	movq	.refptr._ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_(%rip), %rdx
-	movq	%rax, %rcx
-	call	_ZNSolsEPFRSoS_E
-	movsd	16(%rbp), %xmm0
-	movq	.LC3(%rip), %xmm1
-	xorpd	%xmm1, %xmm0
-	call	sqrt
-	movq	%xmm0, %rax
-	jmp	.L21
-.L23:
 	movsd	16(%rbp), %xmm0
 	call	sqrt
 	movq	%xmm0, %rax
-	nop
-.L21:
 	movq	%rax, %xmm0
 	addq	$32, %rsp
 	popq	%rbp
@@ -155,12 +64,12 @@ _Z3mindd:
 	movsd	%xmm1, 24(%rbp)
 	movsd	24(%rbp), %xmm0
 	comisd	16(%rbp), %xmm0
-	jbe	.L29
+	jbe	.L10
 	movsd	16(%rbp), %xmm0
-	jmp	.L27
-.L29:
+	jmp	.L8
+.L10:
 	movsd	24(%rbp), %xmm0
-.L27:
+.L8:
 	movq	%xmm0, %rax
 	movq	%rax, %xmm0
 	popq	%rbp
@@ -179,26 +88,26 @@ _Z4facti:
 	.seh_stackalloc	16
 	.seh_endprologue
 	movl	%ecx, 16(%rbp)
-	movsd	.LC4(%rip), %xmm0
+	movsd	.LC0(%rip), %xmm0
 	movsd	%xmm0, -8(%rbp)
 	cmpl	$0, 16(%rbp)
-	jne	.L31
-	movsd	.LC4(%rip), %xmm0
+	jne	.L12
+	movsd	.LC0(%rip), %xmm0
 	movsd	%xmm0, -8(%rbp)
-	jmp	.L32
-.L31:
+	jmp	.L13
+.L12:
 	movl	$1, -12(%rbp)
-.L33:
+.L14:
 	movl	-12(%rbp), %eax
 	cmpl	16(%rbp), %eax
-	jg	.L32
+	jg	.L13
 	cvtsi2sd	-12(%rbp), %xmm0
 	movsd	-8(%rbp), %xmm1
 	mulsd	%xmm1, %xmm0
 	movsd	%xmm0, -8(%rbp)
 	addl	$1, -12(%rbp)
-	jmp	.L33
-.L32:
+	jmp	.L14
+.L13:
 	movsd	-8(%rbp), %xmm0
 	movq	%xmm0, %rax
 	movq	%rax, %xmm0
@@ -227,18 +136,18 @@ _Z3erfdi:
 	pxor	%xmm0, %xmm0
 	movsd	%xmm0, -40(%rbp)
 	movsd	16(%rbp), %xmm0
-	movq	.LC5(%rip), %xmm1
+	movq	.LC2(%rip), %xmm1
 	andpd	%xmm0, %xmm1
-	movsd	.LC6(%rip), %xmm0
+	movsd	.LC3(%rip), %xmm0
 	comisd	%xmm1, %xmm0
-	jbe	.L48
+	jbe	.L29
 	movl	$0, -44(%rbp)
-.L39:
+.L20:
 	movl	-44(%rbp), %eax
 	cmpl	24(%rbp), %eax
-	jg	.L38
+	jg	.L19
 	cvtsi2sd	-44(%rbp), %xmm0
-	movq	.LC7(%rip), %rax
+	movq	.LC4(%rip), %rax
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -246,7 +155,7 @@ _Z3erfdi:
 	cvtsi2sd	-44(%rbp), %xmm0
 	movapd	%xmm0, %xmm1
 	addsd	%xmm0, %xmm1
-	movsd	.LC4(%rip), %xmm0
+	movsd	.LC0(%rip), %xmm0
 	addsd	%xmm1, %xmm0
 	movapd	%xmm0, %xmm1
 	movsd	16(%rbp), %xmm0
@@ -255,7 +164,7 @@ _Z3erfdi:
 	cvtsi2sd	-44(%rbp), %xmm0
 	movapd	%xmm0, %xmm1
 	addsd	%xmm0, %xmm1
-	movsd	.LC4(%rip), %xmm0
+	movsd	.LC0(%rip), %xmm0
 	movapd	%xmm1, %xmm7
 	addsd	%xmm0, %xmm7
 	movl	-44(%rbp), %eax
@@ -268,31 +177,31 @@ _Z3erfdi:
 	addsd	%xmm1, %xmm0
 	movsd	%xmm0, -40(%rbp)
 	addl	$1, -44(%rbp)
-	jmp	.L39
-.L38:
-	movq	.LC8(%rip), %rax
+	jmp	.L20
+.L19:
+	movq	.LC5(%rip), %rax
 	movq	%rax, %xmm0
 	call	_Z5sqrt_d
 	movapd	%xmm0, %xmm1
-	movsd	.LC9(%rip), %xmm0
+	movsd	.LC6(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	movsd	-40(%rbp), %xmm1
 	mulsd	%xmm1, %xmm0
 	movsd	%xmm0, -56(%rbp)
-	jmp	.L40
-.L48:
+	jmp	.L21
+.L29:
 	movsd	16(%rbp), %xmm0
-	comisd	.LC6(%rip), %xmm0
-	jb	.L41
+	comisd	.LC3(%rip), %xmm0
+	jb	.L22
+	movsd	.LC0(%rip), %xmm0
+	movsd	%xmm0, -56(%rbp)
+.L22:
+	movsd	.LC7(%rip), %xmm0
+	comisd	16(%rbp), %xmm0
+	jb	.L21
 	movsd	.LC4(%rip), %xmm0
 	movsd	%xmm0, -56(%rbp)
-.L41:
-	movsd	.LC10(%rip), %xmm0
-	comisd	16(%rbp), %xmm0
-	jb	.L40
-	movsd	.LC7(%rip), %xmm0
-	movsd	%xmm0, -56(%rbp)
-.L40:
+.L21:
 	movsd	-56(%rbp), %xmm0
 	movq	%xmm0, %rax
 	movq	%rax, %xmm0
@@ -328,30 +237,30 @@ _Z9calculampddddddddi:
 	movsd	(%rax), %xmm0
 	pxor	%xmm1, %xmm1
 	comisd	%xmm1, %xmm0
-	jbe	.L61
-.L57:
+	jbe	.L42
+.L38:
 	movsd	24(%rbp), %xmm0
 	subsd	16(%rbp), %xmm0
 	comisd	32(%rbp), %xmm0
-	jbe	.L62
+	jbe	.L43
 	movsd	24(%rbp), %xmm0
 	movapd	%xmm0, %xmm6
 	divsd	48(%rbp), %xmm6
 	movq	.refptr.Rv(%rip), %rax
 	movsd	(%rax), %xmm0
 	mulsd	56(%rbp), %xmm0
-	movsd	.LC9(%rip), %xmm1
+	movsd	.LC6(%rip), %xmm1
 	divsd	%xmm1, %xmm0
 	call	_Z5sqrt_d
 	mulsd	%xmm6, %xmm0
 	movsd	%xmm0, -64(%rbp)
 	movsd	-64(%rbp), %xmm0
-	movq	.LC3(%rip), %xmm1
+	movq	.LC8(%rip), %xmm1
 	xorpd	%xmm1, %xmm0
 	mulsd	-64(%rbp), %xmm0
 	call	exp
 	movapd	%xmm0, %xmm7
-	movq	.LC8(%rip), %rax
+	movq	.LC5(%rip), %rax
 	movq	%rax, %xmm0
 	call	_Z5sqrt_d
 	movapd	%xmm0, %xmm6
@@ -362,7 +271,7 @@ _Z9calculampddddddddi:
 	movq	%rcx, %xmm0
 	call	_Z3erfdi
 	movapd	%xmm0, %xmm1
-	movsd	.LC4(%rip), %xmm0
+	movsd	.LC0(%rip), %xmm0
 	subsd	%xmm1, %xmm0
 	mulsd	%xmm6, %xmm0
 	subsd	%xmm0, %xmm7
@@ -372,7 +281,7 @@ _Z9calculampddddddddi:
 	movsd	(%rax), %xmm6
 	movq	.refptr.Rv(%rip), %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC11(%rip), %xmm0
+	movsd	.LC9(%rip), %xmm0
 	mulsd	%xmm1, %xmm0
 	call	_Z5sqrt_d
 	divsd	%xmm0, %xmm6
@@ -401,7 +310,7 @@ _Z9calculampddddddddi:
 	movsd	%xmm0, -80(%rbp)
 	movsd	16(%rbp), %xmm0
 	addsd	24(%rbp), %xmm0
-	movsd	.LC9(%rip), %xmm1
+	movsd	.LC6(%rip), %xmm1
 	divsd	%xmm1, %xmm0
 	movsd	%xmm0, -56(%rbp)
 	movsd	-56(%rbp), %xmm0
@@ -410,18 +319,18 @@ _Z9calculampddddddddi:
 	movq	.refptr.Rv(%rip), %rax
 	movsd	(%rax), %xmm0
 	mulsd	56(%rbp), %xmm0
-	movsd	.LC9(%rip), %xmm1
+	movsd	.LC6(%rip), %xmm1
 	divsd	%xmm1, %xmm0
 	call	_Z5sqrt_d
 	mulsd	%xmm6, %xmm0
 	movsd	%xmm0, -64(%rbp)
 	movsd	-64(%rbp), %xmm0
-	movq	.LC3(%rip), %xmm1
+	movq	.LC8(%rip), %xmm1
 	xorpd	%xmm1, %xmm0
 	mulsd	-64(%rbp), %xmm0
 	call	exp
 	movapd	%xmm0, %xmm7
-	movq	.LC8(%rip), %rax
+	movq	.LC5(%rip), %rax
 	movq	%rax, %xmm0
 	call	_Z5sqrt_d
 	movapd	%xmm0, %xmm6
@@ -432,7 +341,7 @@ _Z9calculampddddddddi:
 	movq	%rcx, %xmm0
 	call	_Z3erfdi
 	movapd	%xmm0, %xmm1
-	movsd	.LC4(%rip), %xmm0
+	movsd	.LC0(%rip), %xmm0
 	subsd	%xmm1, %xmm0
 	mulsd	%xmm6, %xmm0
 	subsd	%xmm0, %xmm7
@@ -442,7 +351,7 @@ _Z9calculampddddddddi:
 	movsd	(%rax), %xmm6
 	movq	.refptr.Rv(%rip), %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC11(%rip), %xmm0
+	movsd	.LC9(%rip), %xmm0
 	mulsd	%xmm1, %xmm0
 	call	_Z5sqrt_d
 	divsd	%xmm0, %xmm6
@@ -473,22 +382,22 @@ _Z9calculampddddddddi:
 	mulsd	-88(%rbp), %xmm0
 	pxor	%xmm1, %xmm1
 	comisd	%xmm1, %xmm0
-	jbe	.L63
+	jbe	.L44
 	movsd	-56(%rbp), %xmm0
 	movsd	%xmm0, 24(%rbp)
-	jmp	.L57
-.L63:
+	jmp	.L38
+.L44:
 	movsd	-56(%rbp), %xmm0
 	movsd	%xmm0, 16(%rbp)
-	jmp	.L57
-.L62:
+	jmp	.L38
+.L43:
 	movsd	-56(%rbp), %xmm0
-	jmp	.L58
-.L61:
+	jmp	.L39
+.L42:
 	pxor	%xmm0, %xmm0
 	movsd	%xmm0, -56(%rbp)
 	movsd	-56(%rbp), %xmm0
-.L58:
+.L39:
 	movq	%xmm0, %rax
 	movq	%rax, %xmm0
 	movaps	-48(%rbp), %xmm6
@@ -518,11 +427,11 @@ _Z10calculaTBTddddddddd:
 	movsd	%xmm1, 24(%rbp)
 	movsd	%xmm2, 32(%rbp)
 	movsd	%xmm3, 40(%rbp)
-.L70:
+.L51:
 	movsd	24(%rbp), %xmm0
 	subsd	16(%rbp), %xmm0
 	comisd	32(%rbp), %xmm0
-	jbe	.L74
+	jbe	.L55
 	movsd	24(%rbp), %xmm0
 	movapd	%xmm0, %xmm6
 	subsd	40(%rbp), %xmm6
@@ -531,11 +440,11 @@ _Z10calculaTBTddddddddd:
 	addsd	%xmm0, %xmm0
 	movapd	%xmm0, %xmm1
 	mulsd	64(%rbp), %xmm1
-	movsd	.LC4(%rip), %xmm0
+	movsd	.LC0(%rip), %xmm0
 	movapd	%xmm0, %xmm7
 	divsd	%xmm1, %xmm7
 	movsd	80(%rbp), %xmm1
-	movsd	.LC8(%rip), %xmm0
+	movsd	.LC5(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movq	.refptr.K(%rip), %rax
 	movsd	(%rax), %xmm0
@@ -551,7 +460,7 @@ _Z10calculaTBTddddddddd:
 	movq	.refptr.alfae(%rip), %rax
 	movsd	(%rax), %xmm0
 	mulsd	%xmm0, %xmm2
-	movsd	.LC9(%rip), %xmm0
+	movsd	.LC6(%rip), %xmm0
 	subsd	%xmm2, %xmm0
 	mulsd	%xmm1, %xmm0
 	movq	.refptr.alfae(%rip), %rax
@@ -569,7 +478,7 @@ _Z10calculaTBTddddddddd:
 	movsd	%xmm0, -48(%rbp)
 	movsd	24(%rbp), %xmm0
 	addsd	16(%rbp), %xmm0
-	movsd	.LC9(%rip), %xmm1
+	movsd	.LC6(%rip), %xmm1
 	divsd	%xmm1, %xmm0
 	movsd	%xmm0, -40(%rbp)
 	movsd	-40(%rbp), %xmm0
@@ -580,11 +489,11 @@ _Z10calculaTBTddddddddd:
 	addsd	%xmm0, %xmm0
 	movapd	%xmm0, %xmm1
 	mulsd	64(%rbp), %xmm1
-	movsd	.LC4(%rip), %xmm0
+	movsd	.LC0(%rip), %xmm0
 	movapd	%xmm0, %xmm7
 	divsd	%xmm1, %xmm7
 	movsd	80(%rbp), %xmm1
-	movsd	.LC8(%rip), %xmm0
+	movsd	.LC5(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movq	.refptr.K(%rip), %rax
 	movsd	(%rax), %xmm0
@@ -600,7 +509,7 @@ _Z10calculaTBTddddddddd:
 	movq	.refptr.alfae(%rip), %rax
 	movsd	(%rax), %xmm0
 	mulsd	%xmm0, %xmm2
-	movsd	.LC9(%rip), %xmm0
+	movsd	.LC6(%rip), %xmm0
 	subsd	%xmm2, %xmm0
 	mulsd	%xmm1, %xmm0
 	movq	.refptr.alfae(%rip), %rax
@@ -620,15 +529,15 @@ _Z10calculaTBTddddddddd:
 	mulsd	-56(%rbp), %xmm0
 	pxor	%xmm1, %xmm1
 	comisd	%xmm1, %xmm0
-	jbe	.L75
+	jbe	.L56
 	movsd	-40(%rbp), %xmm0
 	movsd	%xmm0, 24(%rbp)
-	jmp	.L70
-.L75:
+	jmp	.L51
+.L56:
 	movsd	-40(%rbp), %xmm0
 	movsd	%xmm0, 16(%rbp)
-	jmp	.L70
-.L74:
+	jmp	.L51
+.L55:
 	movsd	-40(%rbp), %xmm0
 	movq	%xmm0, %rax
 	movq	%rax, %xmm0
@@ -658,11 +567,11 @@ _Z10calculaTBYddddddddd:
 	movsd	%xmm1, 24(%rbp)
 	movsd	%xmm2, 32(%rbp)
 	movsd	%xmm3, 40(%rbp)
-.L82:
+.L63:
 	movsd	24(%rbp), %xmm0
 	subsd	16(%rbp), %xmm0
 	comisd	32(%rbp), %xmm0
-	jbe	.L86
+	jbe	.L67
 	movsd	24(%rbp), %xmm0
 	movapd	%xmm0, %xmm6
 	subsd	40(%rbp), %xmm6
@@ -671,11 +580,11 @@ _Z10calculaTBYddddddddd:
 	addsd	%xmm0, %xmm0
 	movapd	%xmm0, %xmm1
 	mulsd	64(%rbp), %xmm1
-	movsd	.LC4(%rip), %xmm0
+	movsd	.LC0(%rip), %xmm0
 	movapd	%xmm0, %xmm7
 	divsd	%xmm1, %xmm7
 	movsd	80(%rbp), %xmm1
-	movsd	.LC8(%rip), %xmm0
+	movsd	.LC5(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movq	.refptr.K(%rip), %rax
 	movsd	(%rax), %xmm0
@@ -691,7 +600,7 @@ _Z10calculaTBYddddddddd:
 	movq	.refptr.alfae(%rip), %rax
 	movsd	(%rax), %xmm0
 	mulsd	%xmm0, %xmm2
-	movsd	.LC9(%rip), %xmm0
+	movsd	.LC6(%rip), %xmm0
 	subsd	%xmm2, %xmm0
 	mulsd	%xmm1, %xmm0
 	movq	.refptr.alfae(%rip), %rax
@@ -710,7 +619,7 @@ _Z10calculaTBYddddddddd:
 	movsd	%xmm0, -48(%rbp)
 	movsd	24(%rbp), %xmm0
 	addsd	16(%rbp), %xmm0
-	movsd	.LC9(%rip), %xmm1
+	movsd	.LC6(%rip), %xmm1
 	divsd	%xmm1, %xmm0
 	movsd	%xmm0, -40(%rbp)
 	movsd	-40(%rbp), %xmm0
@@ -721,11 +630,11 @@ _Z10calculaTBYddddddddd:
 	addsd	%xmm0, %xmm0
 	movapd	%xmm0, %xmm1
 	mulsd	64(%rbp), %xmm1
-	movsd	.LC4(%rip), %xmm0
+	movsd	.LC0(%rip), %xmm0
 	movapd	%xmm0, %xmm7
 	divsd	%xmm1, %xmm7
 	movsd	80(%rbp), %xmm1
-	movsd	.LC8(%rip), %xmm0
+	movsd	.LC5(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movq	.refptr.K(%rip), %rax
 	movsd	(%rax), %xmm0
@@ -741,7 +650,7 @@ _Z10calculaTBYddddddddd:
 	movq	.refptr.alfae(%rip), %rax
 	movsd	(%rax), %xmm0
 	mulsd	%xmm0, %xmm2
-	movsd	.LC9(%rip), %xmm0
+	movsd	.LC6(%rip), %xmm0
 	subsd	%xmm2, %xmm0
 	mulsd	%xmm1, %xmm0
 	movq	.refptr.alfae(%rip), %rax
@@ -762,15 +671,15 @@ _Z10calculaTBYddddddddd:
 	mulsd	-56(%rbp), %xmm0
 	pxor	%xmm1, %xmm1
 	comisd	%xmm1, %xmm0
-	jbe	.L87
+	jbe	.L68
 	movsd	-40(%rbp), %xmm0
 	movsd	%xmm0, 24(%rbp)
-	jmp	.L82
-.L87:
+	jmp	.L63
+.L68:
 	movsd	-40(%rbp), %xmm0
 	movsd	%xmm0, 16(%rbp)
-	jmp	.L82
-.L86:
+	jmp	.L63
+.L67:
 	movsd	-40(%rbp), %xmm0
 	movq	%xmm0, %rax
 	movq	%rax, %xmm0
@@ -800,11 +709,11 @@ _Z11calculaTBHPddddddd:
 	movsd	%xmm1, 24(%rbp)
 	movsd	%xmm2, 32(%rbp)
 	movsd	%xmm3, 40(%rbp)
-.L94:
+.L75:
 	movsd	24(%rbp), %xmm0
 	subsd	16(%rbp), %xmm0
 	comisd	32(%rbp), %xmm0
-	jbe	.L98
+	jbe	.L79
 	movsd	24(%rbp), %xmm0
 	movapd	%xmm0, %xmm6
 	subsd	40(%rbp), %xmm6
@@ -813,11 +722,11 @@ _Z11calculaTBHPddddddd:
 	addsd	%xmm0, %xmm0
 	movapd	%xmm0, %xmm1
 	mulsd	56(%rbp), %xmm1
-	movsd	.LC4(%rip), %xmm0
+	movsd	.LC0(%rip), %xmm0
 	movapd	%xmm0, %xmm7
 	divsd	%xmm1, %xmm7
 	movsd	64(%rbp), %xmm1
-	movsd	.LC8(%rip), %xmm0
+	movsd	.LC5(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movq	.refptr.K(%rip), %rax
 	movsd	(%rax), %xmm0
@@ -833,7 +742,7 @@ _Z11calculaTBHPddddddd:
 	movq	.refptr.alfae(%rip), %rax
 	movsd	(%rax), %xmm0
 	mulsd	%xmm0, %xmm2
-	movsd	.LC9(%rip), %xmm0
+	movsd	.LC6(%rip), %xmm0
 	subsd	%xmm2, %xmm0
 	mulsd	%xmm1, %xmm0
 	movq	.refptr.alfae(%rip), %rax
@@ -844,7 +753,7 @@ _Z11calculaTBHPddddddd:
 	movsd	%xmm0, -48(%rbp)
 	movsd	24(%rbp), %xmm0
 	addsd	16(%rbp), %xmm0
-	movsd	.LC9(%rip), %xmm1
+	movsd	.LC6(%rip), %xmm1
 	divsd	%xmm1, %xmm0
 	movsd	%xmm0, -40(%rbp)
 	movsd	-40(%rbp), %xmm0
@@ -855,11 +764,11 @@ _Z11calculaTBHPddddddd:
 	addsd	%xmm0, %xmm0
 	movapd	%xmm0, %xmm1
 	mulsd	56(%rbp), %xmm1
-	movsd	.LC4(%rip), %xmm0
+	movsd	.LC0(%rip), %xmm0
 	movapd	%xmm0, %xmm7
 	divsd	%xmm1, %xmm7
 	movsd	64(%rbp), %xmm1
-	movsd	.LC8(%rip), %xmm0
+	movsd	.LC5(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movq	.refptr.K(%rip), %rax
 	movsd	(%rax), %xmm0
@@ -875,7 +784,7 @@ _Z11calculaTBHPddddddd:
 	movq	.refptr.alfae(%rip), %rax
 	movsd	(%rax), %xmm0
 	mulsd	%xmm0, %xmm2
-	movsd	.LC9(%rip), %xmm0
+	movsd	.LC6(%rip), %xmm0
 	subsd	%xmm2, %xmm0
 	mulsd	%xmm1, %xmm0
 	movq	.refptr.alfae(%rip), %rax
@@ -888,15 +797,15 @@ _Z11calculaTBHPddddddd:
 	mulsd	-56(%rbp), %xmm0
 	pxor	%xmm1, %xmm1
 	comisd	%xmm1, %xmm0
-	jbe	.L99
+	jbe	.L80
 	movsd	-40(%rbp), %xmm0
 	movsd	%xmm0, 24(%rbp)
-	jmp	.L94
-.L99:
+	jmp	.L75
+.L80:
 	movsd	-40(%rbp), %xmm0
 	movsd	%xmm0, 16(%rbp)
-	jmp	.L94
-.L98:
+	jmp	.L75
+.L79:
 	movsd	-40(%rbp), %xmm0
 	movq	%xmm0, %rax
 	movq	%rax, %xmm0
@@ -924,13 +833,13 @@ _Z16calculaCinfCsat2dddddddddddddddd:
 	movsd	%xmm1, 24(%rbp)
 	movsd	%xmm2, 32(%rbp)
 	movsd	%xmm3, 40(%rbp)
-.L118:
+.L99:
 	movsd	24(%rbp), %xmm0
 	subsd	16(%rbp), %xmm0
-	movq	.LC5(%rip), %xmm1
+	movq	.LC2(%rip), %xmm1
 	andpd	%xmm1, %xmm0
 	comisd	32(%rbp), %xmm0
-	jbe	.L126
+	jbe	.L107
 	movsd	120(%rbp), %xmm0
 	mulsd	24(%rbp), %xmm0
 	divsd	88(%rbp), %xmm0
@@ -975,30 +884,30 @@ _Z16calculaCinfCsat2dddddddddddddddd:
 	movsd	%xmm0, -96(%rbp)
 	movsd	96(%rbp), %xmm0
 	mulsd	88(%rbp), %xmm0
-	movq	.LC5(%rip), %xmm1
+	movq	.LC2(%rip), %xmm1
 	andpd	%xmm1, %xmm0
 	movsd	-56(%rbp), %xmm1
-	movq	.LC5(%rip), %xmm2
+	movq	.LC2(%rip), %xmm2
 	andpd	%xmm1, %xmm2
-	movsd	.LC12(%rip), %xmm1
+	movsd	.LC10(%rip), %xmm1
 	mulsd	%xmm2, %xmm1
 	comisd	%xmm1, %xmm0
-	jbe	.L127
+	jbe	.L108
 	movsd	-72(%rbp), %xmm0
-	movq	.LC3(%rip), %xmm1
+	movq	.LC8(%rip), %xmm1
 	xorpd	%xmm1, %xmm0
 	divsd	-64(%rbp), %xmm0
 	movsd	%xmm0, -32(%rbp)
-	jmp	.L105
-.L127:
+	jmp	.L86
+.L108:
 	movsd	-64(%rbp), %xmm0
-	movq	.LC3(%rip), %xmm1
+	movq	.LC8(%rip), %xmm1
 	movapd	%xmm0, %xmm6
 	xorpd	%xmm1, %xmm6
 	movsd	-64(%rbp), %xmm0
 	mulsd	-64(%rbp), %xmm0
 	movsd	-56(%rbp), %xmm2
-	movsd	.LC6(%rip), %xmm1
+	movsd	.LC3(%rip), %xmm1
 	mulsd	%xmm2, %xmm1
 	mulsd	-72(%rbp), %xmm1
 	subsd	%xmm1, %xmm0
@@ -1010,33 +919,33 @@ _Z16calculaCinfCsat2dddddddddddddddd:
 	divsd	%xmm0, %xmm1
 	movapd	%xmm1, %xmm0
 	movsd	%xmm0, -32(%rbp)
-.L105:
+.L86:
 	movsd	104(%rbp), %xmm0
 	mulsd	88(%rbp), %xmm0
-	movq	.LC5(%rip), %xmm1
+	movq	.LC2(%rip), %xmm1
 	andpd	%xmm1, %xmm0
 	movsd	-80(%rbp), %xmm1
-	movq	.LC5(%rip), %xmm2
+	movq	.LC2(%rip), %xmm2
 	andpd	%xmm1, %xmm2
-	movsd	.LC12(%rip), %xmm1
+	movsd	.LC10(%rip), %xmm1
 	mulsd	%xmm2, %xmm1
 	comisd	%xmm1, %xmm0
-	jbe	.L128
+	jbe	.L109
 	movsd	-96(%rbp), %xmm0
-	movq	.LC3(%rip), %xmm1
+	movq	.LC8(%rip), %xmm1
 	xorpd	%xmm1, %xmm0
 	divsd	-88(%rbp), %xmm0
 	movsd	%xmm0, -40(%rbp)
-	jmp	.L108
-.L128:
+	jmp	.L89
+.L109:
 	movsd	-88(%rbp), %xmm0
-	movq	.LC3(%rip), %xmm1
+	movq	.LC8(%rip), %xmm1
 	movapd	%xmm0, %xmm6
 	xorpd	%xmm1, %xmm6
 	movsd	-88(%rbp), %xmm0
 	mulsd	-88(%rbp), %xmm0
 	movsd	-80(%rbp), %xmm2
-	movsd	.LC6(%rip), %xmm1
+	movsd	.LC3(%rip), %xmm1
 	mulsd	%xmm2, %xmm1
 	mulsd	-96(%rbp), %xmm1
 	subsd	%xmm1, %xmm0
@@ -1048,7 +957,7 @@ _Z16calculaCinfCsat2dddddddddddddddd:
 	divsd	%xmm0, %xmm1
 	movapd	%xmm1, %xmm0
 	movsd	%xmm0, -40(%rbp)
-.L108:
+.L89:
 	movsd	112(%rbp), %xmm0
 	subsd	-48(%rbp), %xmm0
 	subsd	-32(%rbp), %xmm0
@@ -1056,7 +965,7 @@ _Z16calculaCinfCsat2dddddddddddddddd:
 	movsd	%xmm0, -104(%rbp)
 	movsd	24(%rbp), %xmm0
 	addsd	16(%rbp), %xmm0
-	movsd	.LC9(%rip), %xmm1
+	movsd	.LC6(%rip), %xmm1
 	divsd	%xmm1, %xmm0
 	movsd	%xmm0, -24(%rbp)
 	movsd	120(%rbp), %xmm0
@@ -1103,30 +1012,30 @@ _Z16calculaCinfCsat2dddddddddddddddd:
 	movsd	%xmm0, -96(%rbp)
 	movsd	96(%rbp), %xmm0
 	mulsd	88(%rbp), %xmm0
-	movq	.LC5(%rip), %xmm1
+	movq	.LC2(%rip), %xmm1
 	andpd	%xmm1, %xmm0
 	movsd	-56(%rbp), %xmm1
-	movq	.LC5(%rip), %xmm2
+	movq	.LC2(%rip), %xmm2
 	andpd	%xmm1, %xmm2
-	movsd	.LC12(%rip), %xmm1
+	movsd	.LC10(%rip), %xmm1
 	mulsd	%xmm2, %xmm1
 	comisd	%xmm1, %xmm0
-	jbe	.L129
+	jbe	.L110
 	movsd	-72(%rbp), %xmm0
-	movq	.LC3(%rip), %xmm1
+	movq	.LC8(%rip), %xmm1
 	xorpd	%xmm1, %xmm0
 	divsd	-64(%rbp), %xmm0
 	movsd	%xmm0, -32(%rbp)
-	jmp	.L111
-.L129:
+	jmp	.L92
+.L110:
 	movsd	-64(%rbp), %xmm0
-	movq	.LC3(%rip), %xmm1
+	movq	.LC8(%rip), %xmm1
 	movapd	%xmm0, %xmm6
 	xorpd	%xmm1, %xmm6
 	movsd	-64(%rbp), %xmm0
 	mulsd	-64(%rbp), %xmm0
 	movsd	-56(%rbp), %xmm2
-	movsd	.LC6(%rip), %xmm1
+	movsd	.LC3(%rip), %xmm1
 	mulsd	%xmm2, %xmm1
 	mulsd	-72(%rbp), %xmm1
 	subsd	%xmm1, %xmm0
@@ -1138,33 +1047,33 @@ _Z16calculaCinfCsat2dddddddddddddddd:
 	divsd	%xmm0, %xmm1
 	movapd	%xmm1, %xmm0
 	movsd	%xmm0, -32(%rbp)
-.L111:
+.L92:
 	movsd	104(%rbp), %xmm0
 	mulsd	88(%rbp), %xmm0
-	movq	.LC5(%rip), %xmm1
+	movq	.LC2(%rip), %xmm1
 	andpd	%xmm1, %xmm0
 	movsd	-80(%rbp), %xmm1
-	movq	.LC5(%rip), %xmm2
+	movq	.LC2(%rip), %xmm2
 	andpd	%xmm1, %xmm2
-	movsd	.LC12(%rip), %xmm1
+	movsd	.LC10(%rip), %xmm1
 	mulsd	%xmm2, %xmm1
 	comisd	%xmm1, %xmm0
-	jbe	.L130
+	jbe	.L111
 	movsd	-96(%rbp), %xmm0
-	movq	.LC3(%rip), %xmm1
+	movq	.LC8(%rip), %xmm1
 	xorpd	%xmm1, %xmm0
 	divsd	-88(%rbp), %xmm0
 	movsd	%xmm0, -40(%rbp)
-	jmp	.L114
-.L130:
+	jmp	.L95
+.L111:
 	movsd	-88(%rbp), %xmm0
-	movq	.LC3(%rip), %xmm1
+	movq	.LC8(%rip), %xmm1
 	movapd	%xmm0, %xmm6
 	xorpd	%xmm1, %xmm6
 	movsd	-88(%rbp), %xmm0
 	mulsd	-88(%rbp), %xmm0
 	movsd	-80(%rbp), %xmm2
-	movsd	.LC6(%rip), %xmm1
+	movsd	.LC3(%rip), %xmm1
 	mulsd	%xmm2, %xmm1
 	mulsd	-96(%rbp), %xmm1
 	subsd	%xmm1, %xmm0
@@ -1176,7 +1085,7 @@ _Z16calculaCinfCsat2dddddddddddddddd:
 	divsd	%xmm0, %xmm1
 	movapd	%xmm1, %xmm0
 	movsd	%xmm0, -40(%rbp)
-.L114:
+.L95:
 	movsd	112(%rbp), %xmm0
 	subsd	-48(%rbp), %xmm0
 	subsd	-32(%rbp), %xmm0
@@ -1186,15 +1095,15 @@ _Z16calculaCinfCsat2dddddddddddddddd:
 	mulsd	-112(%rbp), %xmm0
 	pxor	%xmm1, %xmm1
 	comisd	%xmm1, %xmm0
-	jbe	.L131
+	jbe	.L112
 	movsd	-24(%rbp), %xmm0
 	movsd	%xmm0, 24(%rbp)
-	jmp	.L118
-.L131:
+	jmp	.L99
+.L112:
 	movsd	-24(%rbp), %xmm0
 	movsd	%xmm0, 16(%rbp)
-	jmp	.L118
-.L126:
+	jmp	.L99
+.L107:
 	movsd	-24(%rbp), %xmm0
 	movq	%xmm0, %rax
 	movq	%rax, %xmm0
@@ -1218,25 +1127,25 @@ _Z7PolChebdi:
 	movsd	%xmm0, 16(%rbp)
 	movl	%edx, 24(%rbp)
 	cmpl	$0, 24(%rbp)
-	jne	.L133
-	movsd	.LC4(%rip), %xmm0
+	jne	.L114
+	movsd	.LC0(%rip), %xmm0
 	movsd	%xmm0, -8(%rbp)
-.L133:
+.L114:
 	cmpl	$1, 24(%rbp)
-	jne	.L134
+	jne	.L115
 	movsd	16(%rbp), %xmm0
 	movsd	%xmm0, -8(%rbp)
-	jmp	.L135
-.L134:
+	jmp	.L116
+.L115:
 	movl	$2, -28(%rbp)
-	movsd	.LC4(%rip), %xmm0
+	movsd	.LC0(%rip), %xmm0
 	movsd	%xmm0, -16(%rbp)
 	movsd	16(%rbp), %xmm0
 	movsd	%xmm0, -24(%rbp)
-.L136:
+.L117:
 	movl	-28(%rbp), %eax
 	cmpl	24(%rbp), %eax
-	jg	.L135
+	jg	.L116
 	movsd	16(%rbp), %xmm0
 	addsd	%xmm0, %xmm0
 	mulsd	-24(%rbp), %xmm0
@@ -1247,8 +1156,8 @@ _Z7PolChebdi:
 	movsd	-8(%rbp), %xmm0
 	movsd	%xmm0, -24(%rbp)
 	addl	$1, -28(%rbp)
-	jmp	.L136
-.L135:
+	jmp	.L117
+.L116:
 	movsd	-8(%rbp), %xmm0
 	movq	%xmm0, %rax
 	movq	%rax, %xmm0
@@ -1271,25 +1180,25 @@ _Z8DerPChebdi:
 	movsd	%xmm0, 16(%rbp)
 	movl	%edx, 24(%rbp)
 	cmpl	$0, 24(%rbp)
-	jne	.L139
+	jne	.L120
 	pxor	%xmm0, %xmm0
 	movsd	%xmm0, -8(%rbp)
-.L139:
+.L120:
 	cmpl	$1, 24(%rbp)
-	jne	.L140
-	movsd	.LC4(%rip), %xmm0
+	jne	.L121
+	movsd	.LC0(%rip), %xmm0
 	movsd	%xmm0, -8(%rbp)
-	jmp	.L141
-.L140:
+	jmp	.L122
+.L121:
 	movl	$2, -28(%rbp)
 	pxor	%xmm0, %xmm0
 	movsd	%xmm0, -24(%rbp)
-	movsd	.LC4(%rip), %xmm0
+	movsd	.LC0(%rip), %xmm0
 	movsd	%xmm0, -16(%rbp)
-.L142:
+.L123:
 	movl	-28(%rbp), %eax
 	cmpl	24(%rbp), %eax
-	jg	.L141
+	jg	.L122
 	movl	-28(%rbp), %eax
 	subl	$1, %eax
 	movl	%eax, %edx
@@ -1311,8 +1220,8 @@ _Z8DerPChebdi:
 	movsd	-8(%rbp), %xmm0
 	movsd	%xmm0, -16(%rbp)
 	addl	$1, -28(%rbp)
-	jmp	.L142
-.L141:
+	jmp	.L123
+.L122:
 	movsd	-8(%rbp), %xmm0
 	movq	%xmm0, %rax
 	movq	%rax, %xmm0
@@ -1335,25 +1244,25 @@ _Z8DerSChebdi:
 	movsd	%xmm0, 16(%rbp)
 	movl	%edx, 24(%rbp)
 	cmpl	$0, 24(%rbp)
-	jne	.L145
+	jne	.L126
 	pxor	%xmm0, %xmm0
 	movsd	%xmm0, -8(%rbp)
-.L145:
+.L126:
 	cmpl	$1, 24(%rbp)
-	jne	.L146
+	jne	.L127
 	pxor	%xmm0, %xmm0
 	movsd	%xmm0, -8(%rbp)
-	jmp	.L147
-.L146:
+	jmp	.L128
+.L127:
 	movl	$2, -28(%rbp)
 	pxor	%xmm0, %xmm0
 	movsd	%xmm0, -16(%rbp)
 	pxor	%xmm0, %xmm0
 	movsd	%xmm0, -24(%rbp)
-.L148:
+.L129:
 	movl	-28(%rbp), %eax
 	cmpl	24(%rbp), %eax
-	jg	.L147
+	jg	.L128
 	movl	-28(%rbp), %eax
 	subl	$1, %eax
 	movl	%eax, %edx
@@ -1362,7 +1271,7 @@ _Z8DerSChebdi:
 	movq	%xmm0, %rax
 	movq	%rax, -40(%rbp)
 	movsd	-40(%rbp), %xmm1
-	movsd	.LC6(%rip), %xmm0
+	movsd	.LC3(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movsd	16(%rbp), %xmm0
 	addsd	%xmm0, %xmm0
@@ -1375,8 +1284,8 @@ _Z8DerSChebdi:
 	movsd	-8(%rbp), %xmm0
 	movsd	%xmm0, -16(%rbp)
 	addl	$1, -28(%rbp)
-	jmp	.L148
-.L147:
+	jmp	.L129
+.L128:
 	movsd	-8(%rbp), %xmm0
 	movq	%xmm0, %rax
 	movq	%rax, %xmm0
@@ -1482,11 +1391,11 @@ _Z9MasaMolarPd:
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$144, %rax
-	movsd	.LC13(%rip), %xmm0
+	movsd	.LC11(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$152, %rax
-	movsd	.LC14(%rip), %xmm0
+	movsd	.LC12(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	nop
 	popq	%rbp
@@ -1725,79 +1634,79 @@ _Z11DiamColVectPd:
 	movq	%rcx, 16(%rbp)
 	movq	16(%rbp), %rax
 	addq	$8, %rax
-	movsd	.LC15(%rip), %xmm0
+	movsd	.LC13(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$16, %rax
-	movsd	.LC16(%rip), %xmm0
+	movsd	.LC14(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$24, %rax
-	movsd	.LC16(%rip), %xmm0
+	movsd	.LC14(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$32, %rax
-	movsd	.LC17(%rip), %xmm0
+	movsd	.LC15(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$40, %rax
-	movsd	.LC16(%rip), %xmm0
+	movsd	.LC14(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$48, %rax
-	movsd	.LC18(%rip), %xmm0
+	movsd	.LC16(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$56, %rax
-	movsd	.LC16(%rip), %xmm0
+	movsd	.LC14(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$64, %rax
-	movsd	.LC16(%rip), %xmm0
+	movsd	.LC14(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$72, %rax
-	movsd	.LC16(%rip), %xmm0
+	movsd	.LC14(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$80, %rax
-	movsd	.LC19(%rip), %xmm0
+	movsd	.LC17(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$88, %rax
-	movsd	.LC16(%rip), %xmm0
+	movsd	.LC14(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$96, %rax
-	movsd	.LC20(%rip), %xmm0
+	movsd	.LC18(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$104, %rax
-	movsd	.LC16(%rip), %xmm0
+	movsd	.LC14(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$112, %rax
-	movsd	.LC21(%rip), %xmm0
+	movsd	.LC19(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$120, %rax
-	movsd	.LC16(%rip), %xmm0
+	movsd	.LC14(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	subq	$-128, %rax
-	movsd	.LC22(%rip), %xmm0
+	movsd	.LC20(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$136, %rax
-	movsd	.LC23(%rip), %xmm0
+	movsd	.LC21(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$144, %rax
-	movsd	.LC16(%rip), %xmm0
+	movsd	.LC14(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$152, %rax
-	movsd	.LC16(%rip), %xmm0
+	movsd	.LC14(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	nop
 	popq	%rbp
@@ -1828,9 +1737,9 @@ _Z10reaccionesPddddiS_:
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
 	movapd	%xmm0, %xmm1
-	movsd	.LC24(%rip), %xmm0
+	movsd	.LC22(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
-	movsd	.LC25(%rip), %xmm0
+	movsd	.LC23(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movsd	32(%rbp), %xmm0
 	divsd	40(%rbp), %xmm0
@@ -1857,7 +1766,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC7(%rip), %xmm0
+	movsd	.LC4(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -1865,7 +1774,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC26(%rip), %xmm0
+	movsd	.LC24(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -1880,7 +1789,7 @@ _Z10reaccionesPddddiS_:
 	movsd	32(%rbp), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC27(%rip), %xmm0
+	movsd	.LC25(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -1895,7 +1804,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC28(%rip), %xmm0
+	movsd	.LC26(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -1903,7 +1812,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC29(%rip), %xmm0
+	movsd	.LC27(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -1920,9 +1829,9 @@ _Z10reaccionesPddddiS_:
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
 	movapd	%xmm0, %xmm1
-	movsd	.LC30(%rip), %xmm0
+	movsd	.LC28(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
-	movsd	.LC25(%rip), %xmm0
+	movsd	.LC23(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movsd	32(%rbp), %xmm0
 	divsd	40(%rbp), %xmm0
@@ -1949,7 +1858,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC7(%rip), %xmm0
+	movsd	.LC4(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -1957,7 +1866,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC26(%rip), %xmm0
+	movsd	.LC24(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -1973,7 +1882,7 @@ _Z10reaccionesPddddiS_:
 	movsd	32(%rbp), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC31(%rip), %xmm0
+	movsd	.LC29(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -1988,7 +1897,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC32(%rip), %xmm0
+	movsd	.LC30(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -1996,7 +1905,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC33(%rip), %xmm0
+	movsd	.LC31(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -2015,7 +1924,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC34(%rip), %xmm0
+	movsd	.LC32(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -2030,7 +1939,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC35(%rip), %xmm0
+	movsd	.LC33(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -2038,7 +1947,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC36(%rip), %xmm0
+	movsd	.LC34(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -2057,7 +1966,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC37(%rip), %xmm0
+	movsd	.LC35(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -2072,7 +1981,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC35(%rip), %xmm0
+	movsd	.LC33(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -2080,7 +1989,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC38(%rip), %xmm0
+	movsd	.LC36(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -2099,7 +2008,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC39(%rip), %xmm0
+	movsd	.LC37(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -2114,7 +2023,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC40(%rip), %xmm0
+	movsd	.LC38(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -2122,7 +2031,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC41(%rip), %xmm0
+	movsd	.LC39(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -2141,7 +2050,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC42(%rip), %xmm0
+	movsd	.LC40(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -2156,7 +2065,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC43(%rip), %xmm0
+	movsd	.LC41(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -2164,7 +2073,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC44(%rip), %xmm0
+	movsd	.LC42(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -2181,9 +2090,9 @@ _Z10reaccionesPddddiS_:
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
 	movapd	%xmm0, %xmm1
-	movsd	.LC45(%rip), %xmm0
+	movsd	.LC43(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
-	movsd	.LC25(%rip), %xmm0
+	movsd	.LC23(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movsd	32(%rbp), %xmm0
 	divsd	40(%rbp), %xmm0
@@ -2210,7 +2119,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC7(%rip), %xmm0
+	movsd	.LC4(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -2218,7 +2127,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC26(%rip), %xmm0
+	movsd	.LC24(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -2234,7 +2143,7 @@ _Z10reaccionesPddddiS_:
 	movsd	32(%rbp), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC46(%rip), %xmm0
+	movsd	.LC44(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -2249,7 +2158,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC47(%rip), %xmm0
+	movsd	.LC45(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -2257,7 +2166,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC48(%rip), %xmm0
+	movsd	.LC46(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -2274,9 +2183,9 @@ _Z10reaccionesPddddiS_:
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
 	movapd	%xmm0, %xmm1
-	movsd	.LC49(%rip), %xmm0
+	movsd	.LC47(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
-	movsd	.LC25(%rip), %xmm0
+	movsd	.LC23(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movsd	32(%rbp), %xmm0
 	divsd	40(%rbp), %xmm0
@@ -2303,7 +2212,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC50(%rip), %xmm0
+	movsd	.LC48(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -2311,7 +2220,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC26(%rip), %xmm0
+	movsd	.LC24(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -2327,7 +2236,7 @@ _Z10reaccionesPddddiS_:
 	movsd	32(%rbp), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC51(%rip), %xmm0
+	movsd	.LC49(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -2342,7 +2251,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC50(%rip), %xmm0
+	movsd	.LC48(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -2350,7 +2259,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC52(%rip), %xmm0
+	movsd	.LC50(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -2369,7 +2278,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC53(%rip), %xmm0
+	movsd	.LC51(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -2384,7 +2293,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC54(%rip), %xmm0
+	movsd	.LC52(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -2392,7 +2301,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC55(%rip), %xmm0
+	movsd	.LC53(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -2411,7 +2320,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC56(%rip), %xmm0
+	movsd	.LC54(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -2426,7 +2335,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC57(%rip), %xmm0
+	movsd	.LC55(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -2434,7 +2343,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC58(%rip), %xmm0
+	movsd	.LC56(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -2453,7 +2362,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC59(%rip), %xmm0
+	movsd	.LC57(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -2468,7 +2377,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC60(%rip), %xmm0
+	movsd	.LC58(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -2476,7 +2385,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC61(%rip), %xmm0
+	movsd	.LC59(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -2495,7 +2404,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC62(%rip), %xmm0
+	movsd	.LC60(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -2510,7 +2419,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC63(%rip), %xmm0
+	movsd	.LC61(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -2518,7 +2427,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC64(%rip), %xmm0
+	movsd	.LC62(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -2537,7 +2446,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC65(%rip), %xmm0
+	movsd	.LC63(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -2559,7 +2468,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC66(%rip), %xmm0
+	movsd	.LC64(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -2578,7 +2487,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC67(%rip), %xmm0
+	movsd	.LC65(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -2593,7 +2502,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC68(%rip), %xmm0
+	movsd	.LC66(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -2601,7 +2510,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC69(%rip), %xmm0
+	movsd	.LC67(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -2620,7 +2529,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC70(%rip), %xmm0
+	movsd	.LC68(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -2635,7 +2544,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC4(%rip), %xmm0
+	movsd	.LC0(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -2643,7 +2552,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC71(%rip), %xmm0
+	movsd	.LC69(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -2662,7 +2571,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC72(%rip), %xmm0
+	movsd	.LC70(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -2677,7 +2586,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC73(%rip), %xmm0
+	movsd	.LC71(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -2685,7 +2594,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC74(%rip), %xmm0
+	movsd	.LC72(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -2704,7 +2613,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC75(%rip), %xmm0
+	movsd	.LC73(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -2726,7 +2635,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC76(%rip), %xmm0
+	movsd	.LC74(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -2745,7 +2654,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC77(%rip), %xmm0
+	movsd	.LC75(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -2760,7 +2669,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC43(%rip), %xmm0
+	movsd	.LC41(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -2768,7 +2677,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC78(%rip), %xmm0
+	movsd	.LC76(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -2787,7 +2696,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC79(%rip), %xmm0
+	movsd	.LC77(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -2809,7 +2718,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC80(%rip), %xmm0
+	movsd	.LC78(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -2828,7 +2737,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC81(%rip), %xmm0
+	movsd	.LC79(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -2843,7 +2752,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC4(%rip), %xmm0
+	movsd	.LC0(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -2851,7 +2760,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC82(%rip), %xmm0
+	movsd	.LC80(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -2870,7 +2779,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC83(%rip), %xmm0
+	movsd	.LC81(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -2892,7 +2801,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC84(%rip), %xmm0
+	movsd	.LC82(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -2911,7 +2820,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC81(%rip), %xmm0
+	movsd	.LC79(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -2926,7 +2835,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC4(%rip), %xmm0
+	movsd	.LC0(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -2934,7 +2843,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC85(%rip), %xmm0
+	movsd	.LC83(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -2953,7 +2862,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC86(%rip), %xmm0
+	movsd	.LC84(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -2975,7 +2884,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC87(%rip), %xmm0
+	movsd	.LC85(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -2994,7 +2903,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC88(%rip), %xmm0
+	movsd	.LC86(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -3009,7 +2918,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC89(%rip), %xmm0
+	movsd	.LC87(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -3017,7 +2926,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC90(%rip), %xmm0
+	movsd	.LC88(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -3036,7 +2945,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC91(%rip), %xmm0
+	movsd	.LC89(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movsd	32(%rbp), %xmm0
 	divsd	40(%rbp), %xmm0
@@ -3045,7 +2954,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC40(%rip), %xmm0
+	movsd	.LC38(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -3053,7 +2962,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC92(%rip), %xmm0
+	movsd	.LC90(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -3070,9 +2979,9 @@ _Z10reaccionesPddddiS_:
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
 	movapd	%xmm0, %xmm1
-	movsd	.LC93(%rip), %xmm0
+	movsd	.LC91(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
-	movsd	.LC25(%rip), %xmm0
+	movsd	.LC23(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movsd	32(%rbp), %xmm0
 	divsd	40(%rbp), %xmm0
@@ -3099,7 +3008,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC94(%rip), %xmm0
+	movsd	.LC92(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -3107,7 +3016,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC95(%rip), %xmm0
+	movsd	.LC93(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -3127,9 +3036,9 @@ _Z10reaccionesPddddiS_:
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
 	movapd	%xmm0, %xmm1
-	movsd	.LC96(%rip), %xmm0
+	movsd	.LC94(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
-	movsd	.LC25(%rip), %xmm0
+	movsd	.LC23(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movsd	32(%rbp), %xmm0
 	divsd	40(%rbp), %xmm0
@@ -3146,6 +3055,45 @@ _Z10reaccionesPddddiS_:
 	movl	48(%rbp), %eax
 	cltq
 	addq	$3, %rax
+	leaq	0(,%rax,8), %rdx
+	movq	16(%rbp), %rax
+	addq	%rdx, %rax
+	movsd	(%rax), %xmm0
+	divsd	40(%rbp), %xmm0
+	movapd	%xmm1, %xmm6
+	mulsd	%xmm0, %xmm6
+	movq	16(%rbp), %rax
+	addq	$24, %rax
+	movq	(%rax), %rax
+	movsd	.LC95(%rip), %xmm0
+	movapd	%xmm0, %xmm1
+	movq	%rax, %xmm0
+	call	_Z4pow_dd
+	mulsd	%xmm0, %xmm6
+	movq	16(%rbp), %rax
+	addq	$24, %rax
+	movsd	(%rax), %xmm1
+	movsd	.LC24(%rip), %xmm0
+	divsd	%xmm1, %xmm0
+	call	exp
+	mulsd	%xmm6, %xmm0
+	movq	.refptr.Na(%rip), %rax
+	movsd	(%rax), %xmm1
+	divsd	%xmm1, %xmm0
+	movq	.refptr.Na(%rip), %rax
+	movsd	(%rax), %xmm1
+	movq	56(%rbp), %rax
+	addq	$240, %rax
+	divsd	%xmm1, %xmm0
+	movsd	%xmm0, (%rax)
+	movsd	32(%rbp), %xmm0
+	movapd	%xmm0, %xmm1
+	divsd	40(%rbp), %xmm1
+	movsd	.LC96(%rip), %xmm0
+	mulsd	%xmm0, %xmm1
+	movl	48(%rbp), %eax
+	cltq
+	addq	$13, %rax
 	leaq	0(,%rax,8), %rdx
 	movq	16(%rbp), %rax
 	addq	%rdx, %rax
@@ -3164,46 +3112,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC26(%rip), %xmm0
-	divsd	%xmm1, %xmm0
-	call	exp
-	mulsd	%xmm6, %xmm0
-	movq	.refptr.Na(%rip), %rax
-	movsd	(%rax), %xmm1
-	divsd	%xmm1, %xmm0
-	movq	.refptr.Na(%rip), %rax
-	movsd	(%rax), %xmm1
-	movq	56(%rbp), %rax
-	addq	$240, %rax
-	divsd	%xmm1, %xmm0
-	movsd	%xmm0, (%rax)
-	movsd	32(%rbp), %xmm0
-	movapd	%xmm0, %xmm1
-	divsd	40(%rbp), %xmm1
 	movsd	.LC98(%rip), %xmm0
-	mulsd	%xmm0, %xmm1
-	movl	48(%rbp), %eax
-	cltq
-	addq	$13, %rax
-	leaq	0(,%rax,8), %rdx
-	movq	16(%rbp), %rax
-	addq	%rdx, %rax
-	movsd	(%rax), %xmm0
-	divsd	40(%rbp), %xmm0
-	movapd	%xmm1, %xmm6
-	mulsd	%xmm0, %xmm6
-	movq	16(%rbp), %rax
-	addq	$24, %rax
-	movq	(%rax), %rax
-	movsd	.LC99(%rip), %xmm0
-	movapd	%xmm0, %xmm1
-	movq	%rax, %xmm0
-	call	_Z4pow_dd
-	mulsd	%xmm0, %xmm6
-	movq	16(%rbp), %rax
-	addq	$24, %rax
-	movsd	(%rax), %xmm1
-	movsd	.LC100(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -3222,7 +3131,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC101(%rip), %xmm0
+	movsd	.LC99(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -3244,7 +3153,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC102(%rip), %xmm0
+	movsd	.LC100(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -3263,7 +3172,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC103(%rip), %xmm0
+	movsd	.LC101(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -3278,7 +3187,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC104(%rip), %xmm0
+	movsd	.LC102(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -3286,7 +3195,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC105(%rip), %xmm0
+	movsd	.LC103(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -3305,7 +3214,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC106(%rip), %xmm0
+	movsd	.LC104(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -3327,7 +3236,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC107(%rip), %xmm0
+	movsd	.LC105(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -3346,7 +3255,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC108(%rip), %xmm0
+	movsd	.LC106(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -3361,7 +3270,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC109(%rip), %xmm0
+	movsd	.LC107(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -3369,7 +3278,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC110(%rip), %xmm0
+	movsd	.LC108(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -3388,7 +3297,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC111(%rip), %xmm0
+	movsd	.LC109(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -3410,7 +3319,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC26(%rip), %xmm0
+	movsd	.LC24(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -3429,7 +3338,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC112(%rip), %xmm0
+	movsd	.LC110(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -3444,7 +3353,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC113(%rip), %xmm0
+	movsd	.LC111(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -3452,7 +3361,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC114(%rip), %xmm0
+	movsd	.LC112(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -3471,7 +3380,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC115(%rip), %xmm0
+	movsd	.LC113(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -3493,7 +3402,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC116(%rip), %xmm0
+	movsd	.LC114(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -3512,7 +3421,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC117(%rip), %xmm0
+	movsd	.LC115(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -3527,7 +3436,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC68(%rip), %xmm0
+	movsd	.LC66(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -3535,7 +3444,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC118(%rip), %xmm0
+	movsd	.LC116(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -3554,7 +3463,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC119(%rip), %xmm0
+	movsd	.LC117(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -3576,7 +3485,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC26(%rip), %xmm0
+	movsd	.LC24(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -3595,7 +3504,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC120(%rip), %xmm0
+	movsd	.LC118(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -3610,7 +3519,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC32(%rip), %xmm0
+	movsd	.LC30(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -3618,7 +3527,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC121(%rip), %xmm0
+	movsd	.LC119(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -3637,7 +3546,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC122(%rip), %xmm0
+	movsd	.LC120(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -3652,7 +3561,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC123(%rip), %xmm0
+	movsd	.LC121(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -3660,7 +3569,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC26(%rip), %xmm0
+	movsd	.LC24(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -3679,7 +3588,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC124(%rip), %xmm0
+	movsd	.LC122(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -3694,7 +3603,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC73(%rip), %xmm0
+	movsd	.LC71(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -3702,7 +3611,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC125(%rip), %xmm0
+	movsd	.LC123(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -3721,7 +3630,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC126(%rip), %xmm0
+	movsd	.LC124(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -3736,7 +3645,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC9(%rip), %xmm0
+	movsd	.LC6(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -3744,7 +3653,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC71(%rip), %xmm0
+	movsd	.LC69(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -3763,7 +3672,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC127(%rip), %xmm0
+	movsd	.LC125(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -3778,7 +3687,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC73(%rip), %xmm0
+	movsd	.LC71(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -3786,7 +3695,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC128(%rip), %xmm0
+	movsd	.LC126(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -3805,7 +3714,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC129(%rip), %xmm0
+	movsd	.LC127(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -3820,7 +3729,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC54(%rip), %xmm0
+	movsd	.LC52(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -3828,7 +3737,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC130(%rip), %xmm0
+	movsd	.LC128(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -3847,7 +3756,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC131(%rip), %xmm0
+	movsd	.LC129(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -3862,7 +3771,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC132(%rip), %xmm0
+	movsd	.LC130(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -3870,7 +3779,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC133(%rip), %xmm0
+	movsd	.LC131(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -3889,7 +3798,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC134(%rip), %xmm0
+	movsd	.LC132(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -3911,7 +3820,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC26(%rip), %xmm0
+	movsd	.LC24(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -3930,7 +3839,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC135(%rip), %xmm0
+	movsd	.LC133(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -3945,7 +3854,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC136(%rip), %xmm0
+	movsd	.LC134(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -3953,7 +3862,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC137(%rip), %xmm0
+	movsd	.LC135(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -3972,7 +3881,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC119(%rip), %xmm0
+	movsd	.LC117(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -3994,7 +3903,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC138(%rip), %xmm0
+	movsd	.LC136(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -4013,7 +3922,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC139(%rip), %xmm0
+	movsd	.LC137(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -4028,7 +3937,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC40(%rip), %xmm0
+	movsd	.LC38(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -4036,7 +3945,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC140(%rip), %xmm0
+	movsd	.LC138(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -4055,7 +3964,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC141(%rip), %xmm0
+	movsd	.LC139(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -4070,7 +3979,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC113(%rip), %xmm0
+	movsd	.LC111(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -4078,7 +3987,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC26(%rip), %xmm0
+	movsd	.LC24(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -4097,7 +4006,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC142(%rip), %xmm0
+	movsd	.LC140(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -4119,7 +4028,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC143(%rip), %xmm0
+	movsd	.LC141(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -4138,7 +4047,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC144(%rip), %xmm0
+	movsd	.LC142(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -4153,7 +4062,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC145(%rip), %xmm0
+	movsd	.LC143(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -4161,7 +4070,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC26(%rip), %xmm0
+	movsd	.LC24(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -4180,7 +4089,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC146(%rip), %xmm0
+	movsd	.LC144(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -4195,7 +4104,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC147(%rip), %xmm0
+	movsd	.LC145(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -4203,7 +4112,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC148(%rip), %xmm0
+	movsd	.LC146(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -4222,7 +4131,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC149(%rip), %xmm0
+	movsd	.LC147(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -4244,7 +4153,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC26(%rip), %xmm0
+	movsd	.LC24(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -4263,7 +4172,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC150(%rip), %xmm0
+	movsd	.LC148(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -4278,7 +4187,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC151(%rip), %xmm0
+	movsd	.LC149(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -4286,7 +4195,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC152(%rip), %xmm0
+	movsd	.LC150(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -4305,7 +4214,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC153(%rip), %xmm0
+	movsd	.LC151(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -4327,7 +4236,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC26(%rip), %xmm0
+	movsd	.LC24(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -4346,7 +4255,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC154(%rip), %xmm0
+	movsd	.LC152(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -4361,7 +4270,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC151(%rip), %xmm0
+	movsd	.LC149(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -4369,7 +4278,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC155(%rip), %xmm0
+	movsd	.LC153(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -4388,7 +4297,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC111(%rip), %xmm0
+	movsd	.LC109(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -4410,7 +4319,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC156(%rip), %xmm0
+	movsd	.LC154(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -4429,7 +4338,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC157(%rip), %xmm0
+	movsd	.LC155(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -4444,7 +4353,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC158(%rip), %xmm0
+	movsd	.LC156(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -4452,7 +4361,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC159(%rip), %xmm0
+	movsd	.LC157(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -4471,7 +4380,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC160(%rip), %xmm0
+	movsd	.LC158(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -4486,7 +4395,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC54(%rip), %xmm0
+	movsd	.LC52(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -4494,7 +4403,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC161(%rip), %xmm0
+	movsd	.LC159(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -4513,7 +4422,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC162(%rip), %xmm0
+	movsd	.LC160(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -4528,7 +4437,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC132(%rip), %xmm0
+	movsd	.LC130(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -4536,7 +4445,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC163(%rip), %xmm0
+	movsd	.LC161(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -4563,7 +4472,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC164(%rip), %xmm0
+	movsd	.LC162(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movsd	32(%rbp), %xmm0
 	divsd	40(%rbp), %xmm0
@@ -4572,7 +4481,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC136(%rip), %xmm0
+	movsd	.LC134(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -4580,7 +4489,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC165(%rip), %xmm0
+	movsd	.LC163(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -4597,9 +4506,9 @@ _Z10reaccionesPddddiS_:
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
 	movapd	%xmm0, %xmm1
-	movsd	.LC166(%rip), %xmm0
+	movsd	.LC164(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
-	movsd	.LC25(%rip), %xmm0
+	movsd	.LC23(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movsd	32(%rbp), %xmm0
 	divsd	40(%rbp), %xmm0
@@ -4626,7 +4535,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC167(%rip), %xmm0
+	movsd	.LC165(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -4634,7 +4543,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC168(%rip), %xmm0
+	movsd	.LC166(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -4656,7 +4565,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC169(%rip), %xmm0
+	movsd	.LC167(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -4697,7 +4606,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC170(%rip), %xmm0
+	movsd	.LC168(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -4712,7 +4621,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC104(%rip), %xmm0
+	movsd	.LC102(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -4720,7 +4629,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC171(%rip), %xmm0
+	movsd	.LC169(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -4739,7 +4648,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC172(%rip), %xmm0
+	movsd	.LC170(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -4780,7 +4689,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC173(%rip), %xmm0
+	movsd	.LC171(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -4795,7 +4704,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC158(%rip), %xmm0
+	movsd	.LC156(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -4803,7 +4712,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC174(%rip), %xmm0
+	movsd	.LC172(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -4822,7 +4731,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC175(%rip), %xmm0
+	movsd	.LC173(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -4863,7 +4772,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC176(%rip), %xmm0
+	movsd	.LC174(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -4878,7 +4787,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC104(%rip), %xmm0
+	movsd	.LC102(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -4886,7 +4795,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC177(%rip), %xmm0
+	movsd	.LC175(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -4905,7 +4814,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC119(%rip), %xmm0
+	movsd	.LC117(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -4946,7 +4855,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC178(%rip), %xmm0
+	movsd	.LC176(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -4961,7 +4870,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC158(%rip), %xmm0
+	movsd	.LC156(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -4969,7 +4878,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC179(%rip), %xmm0
+	movsd	.LC177(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -4986,9 +4895,9 @@ _Z10reaccionesPddddiS_:
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
 	movapd	%xmm0, %xmm1
-	movsd	.LC180(%rip), %xmm0
+	movsd	.LC178(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
-	movsd	.LC25(%rip), %xmm0
+	movsd	.LC23(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movsd	32(%rbp), %xmm0
 	divsd	40(%rbp), %xmm0
@@ -5015,7 +4924,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC28(%rip), %xmm0
+	movsd	.LC26(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -5023,7 +4932,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC181(%rip), %xmm0
+	movsd	.LC179(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -5039,7 +4948,7 @@ _Z10reaccionesPddddiS_:
 	movsd	32(%rbp), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC182(%rip), %xmm0
+	movsd	.LC180(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -5054,7 +4963,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC183(%rip), %xmm0
+	movsd	.LC181(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -5062,7 +4971,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC184(%rip), %xmm0
+	movsd	.LC182(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -5081,7 +4990,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC185(%rip), %xmm0
+	movsd	.LC183(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -5122,7 +5031,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC186(%rip), %xmm0
+	movsd	.LC184(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -5137,7 +5046,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC187(%rip), %xmm0
+	movsd	.LC185(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -5145,7 +5054,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC188(%rip), %xmm0
+	movsd	.LC186(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -5164,7 +5073,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC189(%rip), %xmm0
+	movsd	.LC187(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -5179,7 +5088,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC187(%rip), %xmm0
+	movsd	.LC185(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -5187,7 +5096,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC190(%rip), %xmm0
+	movsd	.LC188(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -5206,7 +5115,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC191(%rip), %xmm0
+	movsd	.LC189(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -5221,7 +5130,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC54(%rip), %xmm0
+	movsd	.LC52(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -5229,7 +5138,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC192(%rip), %xmm0
+	movsd	.LC190(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -5248,7 +5157,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC193(%rip), %xmm0
+	movsd	.LC191(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -5263,7 +5172,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC194(%rip), %xmm0
+	movsd	.LC192(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -5271,7 +5180,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC195(%rip), %xmm0
+	movsd	.LC193(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -5290,7 +5199,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC196(%rip), %xmm0
+	movsd	.LC194(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -5305,7 +5214,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC197(%rip), %xmm0
+	movsd	.LC195(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -5313,7 +5222,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC198(%rip), %xmm0
+	movsd	.LC196(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -5332,7 +5241,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC199(%rip), %xmm0
+	movsd	.LC197(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -5347,7 +5256,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC60(%rip), %xmm0
+	movsd	.LC58(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -5355,7 +5264,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC200(%rip), %xmm0
+	movsd	.LC198(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -5374,7 +5283,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC201(%rip), %xmm0
+	movsd	.LC199(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -5389,7 +5298,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC202(%rip), %xmm0
+	movsd	.LC200(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -5397,7 +5306,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC203(%rip), %xmm0
+	movsd	.LC201(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -5416,7 +5325,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC204(%rip), %xmm0
+	movsd	.LC202(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -5431,7 +5340,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC205(%rip), %xmm0
+	movsd	.LC203(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -5439,7 +5348,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC206(%rip), %xmm0
+	movsd	.LC204(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -5458,7 +5367,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC207(%rip), %xmm0
+	movsd	.LC205(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -5473,7 +5382,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC208(%rip), %xmm0
+	movsd	.LC206(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -5481,7 +5390,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC209(%rip), %xmm0
+	movsd	.LC207(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -5500,7 +5409,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC210(%rip), %xmm0
+	movsd	.LC208(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -5515,7 +5424,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC194(%rip), %xmm0
+	movsd	.LC192(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -5523,7 +5432,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC211(%rip), %xmm0
+	movsd	.LC209(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -5542,7 +5451,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC212(%rip), %xmm0
+	movsd	.LC210(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -5557,7 +5466,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC213(%rip), %xmm0
+	movsd	.LC211(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -5565,7 +5474,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC214(%rip), %xmm0
+	movsd	.LC212(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -5584,7 +5493,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC149(%rip), %xmm0
+	movsd	.LC147(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -5606,7 +5515,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC215(%rip), %xmm0
+	movsd	.LC213(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -5625,7 +5534,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC216(%rip), %xmm0
+	movsd	.LC214(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -5640,7 +5549,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC217(%rip), %xmm0
+	movsd	.LC215(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -5648,7 +5557,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC218(%rip), %xmm0
+	movsd	.LC216(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -5667,7 +5576,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC219(%rip), %xmm0
+	movsd	.LC217(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movsd	32(%rbp), %xmm0
 	divsd	40(%rbp), %xmm0
@@ -5683,7 +5592,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC220(%rip), %xmm0
+	movsd	.LC218(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -5696,7 +5605,7 @@ _Z10reaccionesPddddiS_:
 	movsd	32(%rbp), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC221(%rip), %xmm0
+	movsd	.LC219(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -5720,7 +5629,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC109(%rip), %xmm0
+	movsd	.LC107(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -5728,7 +5637,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC222(%rip), %xmm0
+	movsd	.LC220(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -5750,7 +5659,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC223(%rip), %xmm0
+	movsd	.LC221(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -5772,7 +5681,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC224(%rip), %xmm0
+	movsd	.LC222(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -5791,7 +5700,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC225(%rip), %xmm0
+	movsd	.LC223(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -5806,7 +5715,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC226(%rip), %xmm0
+	movsd	.LC224(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -5814,7 +5723,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC227(%rip), %xmm0
+	movsd	.LC225(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -5833,7 +5742,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC228(%rip), %xmm0
+	movsd	.LC226(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -5855,7 +5764,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC229(%rip), %xmm0
+	movsd	.LC227(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -5874,7 +5783,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC230(%rip), %xmm0
+	movsd	.LC228(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -5889,7 +5798,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC231(%rip), %xmm0
+	movsd	.LC229(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -5897,7 +5806,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC232(%rip), %xmm0
+	movsd	.LC230(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -5916,7 +5825,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC233(%rip), %xmm0
+	movsd	.LC231(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -5931,7 +5840,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC9(%rip), %xmm0
+	movsd	.LC6(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -5939,7 +5848,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC234(%rip), %xmm0
+	movsd	.LC232(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -5958,7 +5867,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC235(%rip), %xmm0
+	movsd	.LC233(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -5973,7 +5882,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movq	(%rax), %rax
-	movsd	.LC236(%rip), %xmm0
+	movsd	.LC234(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -5981,7 +5890,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC237(%rip), %xmm0
+	movsd	.LC235(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -6000,7 +5909,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC238(%rip), %xmm0
+	movsd	.LC236(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -6022,7 +5931,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC239(%rip), %xmm0
+	movsd	.LC237(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -6041,7 +5950,7 @@ _Z10reaccionesPddddiS_:
 	movsd	(%rax), %xmm0
 	movapd	%xmm0, %xmm1
 	divsd	40(%rbp), %xmm1
-	movsd	.LC240(%rip), %xmm0
+	movsd	.LC238(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movl	48(%rbp), %eax
 	cltq
@@ -6063,7 +5972,7 @@ _Z10reaccionesPddddiS_:
 	movq	16(%rbp), %rax
 	addq	$24, %rax
 	movsd	(%rax), %xmm1
-	movsd	.LC241(%rip), %xmm0
+	movsd	.LC239(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	call	exp
 	mulsd	%xmm6, %xmm0
@@ -6092,79 +6001,79 @@ _Z8fraccionPd:
 	movq	%rcx, 16(%rbp)
 	movq	16(%rbp), %rax
 	addq	$8, %rax
-	movsd	.LC242(%rip), %xmm0
+	movsd	.LC240(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$16, %rax
-	movsd	.LC243(%rip), %xmm0
+	movsd	.LC241(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$24, %rax
-	movsd	.LC243(%rip), %xmm0
+	movsd	.LC241(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$32, %rax
-	movsd	.LC242(%rip), %xmm0
+	movsd	.LC240(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$40, %rax
-	movsd	.LC242(%rip), %xmm0
+	movsd	.LC240(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$48, %rax
-	movsd	.LC244(%rip), %xmm0
+	movsd	.LC242(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$56, %rax
-	movsd	.LC243(%rip), %xmm0
+	movsd	.LC241(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$64, %rax
-	movsd	.LC242(%rip), %xmm0
+	movsd	.LC240(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$72, %rax
-	movsd	.LC244(%rip), %xmm0
+	movsd	.LC242(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$80, %rax
-	movsd	.LC244(%rip), %xmm0
+	movsd	.LC242(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$88, %rax
-	movsd	.LC242(%rip), %xmm0
+	movsd	.LC240(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$96, %rax
-	movsd	.LC242(%rip), %xmm0
+	movsd	.LC240(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$104, %rax
-	movsd	.LC244(%rip), %xmm0
+	movsd	.LC242(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$112, %rax
-	movsd	.LC242(%rip), %xmm0
+	movsd	.LC240(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$120, %rax
-	movsd	.LC242(%rip), %xmm0
+	movsd	.LC240(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	subq	$-128, %rax
-	movsd	.LC242(%rip), %xmm0
+	movsd	.LC240(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$136, %rax
-	movsd	.LC243(%rip), %xmm0
+	movsd	.LC241(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$144, %rax
-	movsd	.LC244(%rip), %xmm0
+	movsd	.LC242(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	movq	16(%rbp), %rax
 	addq	$152, %rax
-	movsd	.LC244(%rip), %xmm0
+	movsd	.LC242(%rip), %xmm0
 	movsd	%xmm0, (%rax)
 	nop
 	popq	%rbp
@@ -6195,16 +6104,16 @@ _Z3Maxee:
 	fldt	-112(%rbp)
 	fcomip	%st(1), %st
 	fstp	%st(0)
-	jb	.L161
+	jb	.L142
 	movq	-64(%rbp), %rax
 	fldt	-112(%rbp)
 	fstpt	(%rax)
-	jmp	.L156
-.L161:
+	jmp	.L137
+.L142:
 	movq	-64(%rbp), %rax
 	fldt	-128(%rbp)
 	fstpt	(%rax)
-.L156:
+.L137:
 	movq	-64(%rbp), %rax
 	addq	$40, %rsp
 	popq	%rbx
@@ -6262,33 +6171,33 @@ _Z8espectroeeeeeeeee:
 	fldt	192(%rbp)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC9(%rip), %xmm0
+	movsd	.LC6(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
 	movapd	%xmm0, %xmm1
-	movsd	.LC246(%rip), %xmm0
+	movsd	.LC244(%rip), %xmm0
 	movapd	%xmm1, %xmm6
 	mulsd	%xmm0, %xmm6
 	fldt	128(%rbp)
 	fldt	176(%rbp)
 	fmulp	%st, %st(1)
-	fldt	.LC247(%rip)
+	fldt	.LC245(%rip)
 	fdivp	%st, %st(1)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm0
-	movq	.LC248(%rip), %rax
+	movq	.LC246(%rip), %rax
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
 	movapd	%xmm0, %xmm1
-	movsd	.LC4(%rip), %xmm0
+	movsd	.LC0(%rip), %xmm0
 	movapd	%xmm1, %xmm7
 	subsd	%xmm0, %xmm7
 	fldt	128(%rbp)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC242(%rip), %xmm0
+	movsd	.LC240(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
@@ -6297,36 +6206,36 @@ _Z8espectroeeeeeeeee:
 	fldt	128(%rbp)
 	fldt	176(%rbp)
 	fmulp	%st, %st(1)
-	fldt	.LC247(%rip)
+	fldt	.LC245(%rip)
 	fdivp	%st, %st(1)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm0
-	movq	.LC248(%rip), %rax
+	movq	.LC246(%rip), %rax
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
 	movapd	%xmm0, %xmm1
-	movsd	.LC4(%rip), %xmm0
+	movsd	.LC0(%rip), %xmm0
 	movapd	%xmm1, %xmm7
 	subsd	%xmm0, %xmm7
 	fldt	128(%rbp)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC242(%rip), %xmm0
+	movsd	.LC240(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
 	mulsd	%xmm0, %xmm7
 	fldt	112(%rbp)
-	fldt	.LC249(%rip)
+	fldt	.LC247(%rip)
 	fmulp	%st, %st(1)
 	fldt	176(%rbp)
 	fdivrp	%st, %st(1)
 	fstpt	-16(%rbp)
 	fldt	128(%rbp)
-	fldt	.LC250(%rip)
+	fldt	.LC248(%rip)
 	fmulp	%st, %st(1)
-	fldt	.LC251(%rip)
+	fldt	.LC249(%rip)
 	fldt	64(%rbp)
 	fdivrp	%st, %st(1)
 	leaq	32(%rbp), %rax
@@ -6340,24 +6249,24 @@ _Z8espectroeeeeeeeee:
 	fldt	32(%rbp)
 	fldt	176(%rbp)
 	fmulp	%st, %st(1)
-	fldt	.LC252(%rip)
+	fldt	.LC250(%rip)
 	fdivp	%st, %st(1)
 	fldt	-16(%rbp)
 	faddp	%st, %st(1)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm0
-	movq	.LC248(%rip), %rax
+	movq	.LC246(%rip), %rax
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
 	movapd	%xmm0, %xmm1
-	movsd	.LC253(%rip), %xmm0
+	movsd	.LC251(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movapd	%xmm1, %xmm8
 	fldt	128(%rbp)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC243(%rip), %xmm0
+	movsd	.LC241(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
@@ -6372,7 +6281,7 @@ _Z8espectroeeeeeeeee:
 	fldt	192(%rbp)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC243(%rip), %xmm0
+	movsd	.LC241(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
@@ -6384,12 +6293,12 @@ _Z8espectroeeeeeeeee:
 	fldt	128(%rbp)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC9(%rip), %xmm0
+	movsd	.LC6(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
 	movapd	%xmm0, %xmm1
-	movsd	.LC254(%rip), %xmm0
+	movsd	.LC252(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movsd	%xmm1, -32(%rbp)
 	fldl	-32(%rbp)
@@ -6399,7 +6308,7 @@ _Z8espectroeeeeeeeee:
 	fldt	192(%rbp)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC243(%rip), %xmm0
+	movsd	.LC241(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
@@ -6415,7 +6324,7 @@ _Z8espectroeeeeeeeee:
 	fldt	-32(%rbp)
 	fmulp	%st, %st(1)
 	fldt	80(%rbp)
-	fldt	.LC255(%rip)
+	fldt	.LC253(%rip)
 	fmulp	%st, %st(1)
 	fldt	176(%rbp)
 	fdivrp	%st, %st(1)
@@ -6426,7 +6335,7 @@ _Z8espectroeeeeeeeee:
 	fldt	176(%rbp)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC256(%rip), %xmm0
+	movsd	.LC254(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
@@ -6436,13 +6345,13 @@ _Z8espectroeeeeeeeee:
 	fmulp	%st, %st(1)
 	fstpt	-32(%rbp)
 	fldt	112(%rbp)
-	fldt	.LC257(%rip)
+	fldt	.LC255(%rip)
 	fmulp	%st, %st(1)
 	fldt	176(%rbp)
 	fdivrp	%st, %st(1)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm0
-	movq	.LC248(%rip), %rax
+	movq	.LC246(%rip), %rax
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -6450,7 +6359,7 @@ _Z8espectroeeeeeeeee:
 	fldt	192(%rbp)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC243(%rip), %xmm0
+	movsd	.LC241(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
@@ -6463,29 +6372,29 @@ _Z8espectroeeeeeeeee:
 	faddp	%st, %st(1)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC9(%rip), %xmm0
+	movsd	.LC6(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
 	mulsd	%xmm0, %xmm7
 	movapd	%xmm7, %xmm1
-	movsd	.LC258(%rip), %xmm0
+	movsd	.LC256(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	subsd	%xmm0, %xmm6
 	fldt	192(%rbp)
-	fldt	.LC259(%rip)
+	fldt	.LC257(%rip)
 	fmulp	%st, %st(1)
 	fstpt	-16(%rbp)
 	fldt	112(%rbp)
-	fldt	.LC249(%rip)
+	fldt	.LC247(%rip)
 	fmulp	%st, %st(1)
 	fldt	176(%rbp)
 	fdivrp	%st, %st(1)
 	fstpt	-32(%rbp)
 	fldt	128(%rbp)
-	fldt	.LC250(%rip)
+	fldt	.LC248(%rip)
 	fmulp	%st, %st(1)
-	fldt	.LC251(%rip)
+	fldt	.LC249(%rip)
 	fldt	64(%rbp)
 	fdivrp	%st, %st(1)
 	leaq	16(%rbp), %rax
@@ -6499,24 +6408,24 @@ _Z8espectroeeeeeeeee:
 	fldt	16(%rbp)
 	fldt	176(%rbp)
 	fmulp	%st, %st(1)
-	fldt	.LC252(%rip)
+	fldt	.LC250(%rip)
 	fdivp	%st, %st(1)
 	fldt	-32(%rbp)
 	faddp	%st, %st(1)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm0
-	movq	.LC248(%rip), %rax
+	movq	.LC246(%rip), %rax
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
 	movapd	%xmm0, %xmm1
-	movsd	.LC253(%rip), %xmm0
+	movsd	.LC251(%rip), %xmm0
 	movapd	%xmm1, %xmm7
 	mulsd	%xmm0, %xmm7
 	fldt	128(%rbp)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC243(%rip), %xmm0
+	movsd	.LC241(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
@@ -6531,7 +6440,7 @@ _Z8espectroeeeeeeeee:
 	fldt	192(%rbp)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC243(%rip), %xmm0
+	movsd	.LC241(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
@@ -6543,18 +6452,18 @@ _Z8espectroeeeeeeeee:
 	fldt	128(%rbp)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC9(%rip), %xmm0
+	movsd	.LC6(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
 	movapd	%xmm0, %xmm1
-	movsd	.LC254(%rip), %xmm0
+	movsd	.LC252(%rip), %xmm0
 	movapd	%xmm1, %xmm7
 	mulsd	%xmm0, %xmm7
 	fldt	192(%rbp)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC243(%rip), %xmm0
+	movsd	.LC241(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
@@ -6564,7 +6473,7 @@ _Z8espectroeeeeeeeee:
 	fdivp	%st, %st(1)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC54(%rip), %xmm0
+	movsd	.LC52(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
@@ -6572,7 +6481,7 @@ _Z8espectroeeeeeeeee:
 	movsd	%xmm7, -48(%rbp)
 	fldl	-48(%rbp)
 	fldt	80(%rbp)
-	fldt	.LC255(%rip)
+	fldt	.LC253(%rip)
 	fmulp	%st, %st(1)
 	fldt	176(%rbp)
 	fdivrp	%st, %st(1)
@@ -6583,7 +6492,7 @@ _Z8espectroeeeeeeeee:
 	fldt	176(%rbp)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC256(%rip), %xmm0
+	movsd	.LC254(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
@@ -6593,13 +6502,13 @@ _Z8espectroeeeeeeeee:
 	fmulp	%st, %st(1)
 	fstpt	-48(%rbp)
 	fldt	112(%rbp)
-	fldt	.LC257(%rip)
+	fldt	.LC255(%rip)
 	fmulp	%st, %st(1)
 	fldt	176(%rbp)
 	fdivrp	%st, %st(1)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm0
-	movq	.LC248(%rip), %rax
+	movq	.LC246(%rip), %rax
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -6613,7 +6522,7 @@ _Z8espectroeeeeeeeee:
 	fmulp	%st, %st(1)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm0
-	movq	.LC248(%rip), %rax
+	movq	.LC246(%rip), %rax
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -6621,37 +6530,37 @@ _Z8espectroeeeeeeeee:
 	fldt	128(%rbp)
 	fldt	176(%rbp)
 	fmulp	%st, %st(1)
-	fldt	.LC247(%rip)
+	fldt	.LC245(%rip)
 	fdivp	%st, %st(1)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm0
-	movq	.LC248(%rip), %rax
+	movq	.LC246(%rip), %rax
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
 	movapd	%xmm0, %xmm1
-	movsd	.LC4(%rip), %xmm0
+	movsd	.LC0(%rip), %xmm0
 	subsd	%xmm0, %xmm1
 	movapd	%xmm1, %xmm0
 	mulsd	%xmm0, %xmm7
 	fldt	128(%rbp)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC242(%rip), %xmm0
+	movsd	.LC240(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
 	mulsd	%xmm0, %xmm7
 	fldt	112(%rbp)
-	fldt	.LC249(%rip)
+	fldt	.LC247(%rip)
 	fmulp	%st, %st(1)
 	fldt	176(%rbp)
 	fdivrp	%st, %st(1)
 	fstpt	-16(%rbp)
 	fldt	128(%rbp)
-	fldt	.LC250(%rip)
+	fldt	.LC248(%rip)
 	fmulp	%st, %st(1)
-	fldt	.LC251(%rip)
+	fldt	.LC249(%rip)
 	fldt	64(%rbp)
 	fdivrp	%st, %st(1)
 	leaq	16(%rbp), %rax
@@ -6665,24 +6574,24 @@ _Z8espectroeeeeeeeee:
 	fldt	16(%rbp)
 	fldt	176(%rbp)
 	fmulp	%st, %st(1)
-	fldt	.LC252(%rip)
+	fldt	.LC250(%rip)
 	fdivp	%st, %st(1)
 	fldt	-16(%rbp)
 	faddp	%st, %st(1)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm0
-	movq	.LC248(%rip), %rax
+	movq	.LC246(%rip), %rax
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
 	movapd	%xmm0, %xmm1
-	movsd	.LC253(%rip), %xmm0
+	movsd	.LC251(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movapd	%xmm1, %xmm8
 	fldt	128(%rbp)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC243(%rip), %xmm0
+	movsd	.LC241(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
@@ -6697,7 +6606,7 @@ _Z8espectroeeeeeeeee:
 	fldt	192(%rbp)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC243(%rip), %xmm0
+	movsd	.LC241(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
@@ -6709,12 +6618,12 @@ _Z8espectroeeeeeeeee:
 	fldt	128(%rbp)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC9(%rip), %xmm0
+	movsd	.LC6(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
 	movapd	%xmm0, %xmm1
-	movsd	.LC254(%rip), %xmm0
+	movsd	.LC252(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movsd	%xmm1, -32(%rbp)
 	fldl	-32(%rbp)
@@ -6724,7 +6633,7 @@ _Z8espectroeeeeeeeee:
 	fldt	192(%rbp)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC243(%rip), %xmm0
+	movsd	.LC241(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
@@ -6740,7 +6649,7 @@ _Z8espectroeeeeeeeee:
 	fldt	-32(%rbp)
 	fmulp	%st, %st(1)
 	fldt	80(%rbp)
-	fldt	.LC255(%rip)
+	fldt	.LC253(%rip)
 	fmulp	%st, %st(1)
 	fldt	176(%rbp)
 	fdivrp	%st, %st(1)
@@ -6751,7 +6660,7 @@ _Z8espectroeeeeeeeee:
 	fldt	176(%rbp)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC256(%rip), %xmm0
+	movsd	.LC254(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
@@ -6761,13 +6670,13 @@ _Z8espectroeeeeeeeee:
 	fmulp	%st, %st(1)
 	fstpt	-32(%rbp)
 	fldt	112(%rbp)
-	fldt	.LC257(%rip)
+	fldt	.LC255(%rip)
 	fmulp	%st, %st(1)
 	fldt	176(%rbp)
 	fdivrp	%st, %st(1)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm0
-	movq	.LC248(%rip), %rax
+	movq	.LC246(%rip), %rax
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -6775,7 +6684,7 @@ _Z8espectroeeeeeeeee:
 	fldt	192(%rbp)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC243(%rip), %xmm0
+	movsd	.LC241(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
@@ -6788,36 +6697,36 @@ _Z8espectroeeeeeeeee:
 	faddp	%st, %st(1)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC9(%rip), %xmm0
+	movsd	.LC6(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
 	mulsd	%xmm0, %xmm7
 	movapd	%xmm7, %xmm1
-	movsd	.LC258(%rip), %xmm0
+	movsd	.LC256(%rip), %xmm0
 	divsd	%xmm1, %xmm0
 	addsd	%xmm0, %xmm6
 	movsd	%xmm6, -16(%rbp)
 	fldl	-16(%rbp)
 	fstpt	-16(%rbp)
 	fldt	192(%rbp)
-	fldt	.LC260(%rip)
+	fldt	.LC258(%rip)
 	fmulp	%st, %st(1)
 	fstpt	-32(%rbp)
 	fldt	192(%rbp)
-	fldt	.LC259(%rip)
+	fldt	.LC257(%rip)
 	fmulp	%st, %st(1)
 	fstpt	-48(%rbp)
 	fldt	112(%rbp)
-	fldt	.LC249(%rip)
+	fldt	.LC247(%rip)
 	fmulp	%st, %st(1)
 	fldt	176(%rbp)
 	fdivrp	%st, %st(1)
 	fstpt	-64(%rbp)
 	fldt	128(%rbp)
-	fldt	.LC250(%rip)
+	fldt	.LC248(%rip)
 	fmulp	%st, %st(1)
-	fldt	.LC251(%rip)
+	fldt	.LC249(%rip)
 	fldt	64(%rbp)
 	fdivrp	%st, %st(1)
 	leaq	16(%rbp), %rax
@@ -6831,24 +6740,24 @@ _Z8espectroeeeeeeeee:
 	fldt	16(%rbp)
 	fldt	176(%rbp)
 	fmulp	%st, %st(1)
-	fldt	.LC252(%rip)
+	fldt	.LC250(%rip)
 	fdivp	%st, %st(1)
 	fldt	-64(%rbp)
 	faddp	%st, %st(1)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm0
-	movq	.LC248(%rip), %rax
+	movq	.LC246(%rip), %rax
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
 	movapd	%xmm0, %xmm1
-	movsd	.LC253(%rip), %xmm0
+	movsd	.LC251(%rip), %xmm0
 	movapd	%xmm1, %xmm6
 	mulsd	%xmm0, %xmm6
 	fldt	128(%rbp)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC243(%rip), %xmm0
+	movsd	.LC241(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
@@ -6863,7 +6772,7 @@ _Z8espectroeeeeeeeee:
 	fldt	192(%rbp)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC243(%rip), %xmm0
+	movsd	.LC241(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
@@ -6875,18 +6784,18 @@ _Z8espectroeeeeeeeee:
 	fldt	128(%rbp)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC9(%rip), %xmm0
+	movsd	.LC6(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
 	movapd	%xmm0, %xmm1
-	movsd	.LC254(%rip), %xmm0
+	movsd	.LC252(%rip), %xmm0
 	movapd	%xmm1, %xmm6
 	mulsd	%xmm0, %xmm6
 	fldt	192(%rbp)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC243(%rip), %xmm0
+	movsd	.LC241(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
@@ -6896,7 +6805,7 @@ _Z8espectroeeeeeeeee:
 	fdivp	%st, %st(1)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC54(%rip), %xmm0
+	movsd	.LC52(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
@@ -6904,7 +6813,7 @@ _Z8espectroeeeeeeeee:
 	movsd	%xmm6, -80(%rbp)
 	fldl	-80(%rbp)
 	fldt	80(%rbp)
-	fldt	.LC255(%rip)
+	fldt	.LC253(%rip)
 	fmulp	%st, %st(1)
 	fldt	176(%rbp)
 	fdivrp	%st, %st(1)
@@ -6915,7 +6824,7 @@ _Z8espectroeeeeeeeee:
 	fldt	176(%rbp)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC256(%rip), %xmm0
+	movsd	.LC254(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
@@ -6925,13 +6834,13 @@ _Z8espectroeeeeeeeee:
 	fmulp	%st, %st(1)
 	fstpt	-80(%rbp)
 	fldt	112(%rbp)
-	fldt	.LC257(%rip)
+	fldt	.LC255(%rip)
 	fmulp	%st, %st(1)
 	fldt	176(%rbp)
 	fdivrp	%st, %st(1)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm0
-	movq	.LC248(%rip), %rax
+	movq	.LC246(%rip), %rax
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -6945,7 +6854,7 @@ _Z8espectroeeeeeeeee:
 	fmulp	%st, %st(1)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm0
-	movq	.LC248(%rip), %rax
+	movq	.LC246(%rip), %rax
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -6953,23 +6862,23 @@ _Z8espectroeeeeeeeee:
 	fldt	128(%rbp)
 	fldt	176(%rbp)
 	fmulp	%st, %st(1)
-	fldt	.LC247(%rip)
+	fldt	.LC245(%rip)
 	fdivp	%st, %st(1)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm0
-	movq	.LC248(%rip), %rax
+	movq	.LC246(%rip), %rax
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
 	movapd	%xmm0, %xmm1
-	movsd	.LC4(%rip), %xmm0
+	movsd	.LC0(%rip), %xmm0
 	subsd	%xmm0, %xmm1
 	movapd	%xmm1, %xmm0
 	mulsd	%xmm0, %xmm6
 	fldt	128(%rbp)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC242(%rip), %xmm0
+	movsd	.LC240(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
@@ -6978,15 +6887,15 @@ _Z8espectroeeeeeeeee:
 	fldl	-48(%rbp)
 	fstpt	-48(%rbp)
 	fldt	112(%rbp)
-	fldt	.LC249(%rip)
+	fldt	.LC247(%rip)
 	fmulp	%st, %st(1)
 	fldt	176(%rbp)
 	fdivrp	%st, %st(1)
 	fstpt	-64(%rbp)
 	fldt	128(%rbp)
-	fldt	.LC250(%rip)
+	fldt	.LC248(%rip)
 	fmulp	%st, %st(1)
-	fldt	.LC251(%rip)
+	fldt	.LC249(%rip)
 	fldt	64(%rbp)
 	fdivrp	%st, %st(1)
 	leaq	16(%rbp), %rax
@@ -7000,24 +6909,24 @@ _Z8espectroeeeeeeeee:
 	fldt	16(%rbp)
 	fldt	176(%rbp)
 	fmulp	%st, %st(1)
-	fldt	.LC252(%rip)
+	fldt	.LC250(%rip)
 	fdivp	%st, %st(1)
 	fldt	-64(%rbp)
 	faddp	%st, %st(1)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm0
-	movq	.LC248(%rip), %rax
+	movq	.LC246(%rip), %rax
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
 	movapd	%xmm0, %xmm1
-	movsd	.LC253(%rip), %xmm0
+	movsd	.LC251(%rip), %xmm0
 	movapd	%xmm1, %xmm6
 	mulsd	%xmm0, %xmm6
 	fldt	128(%rbp)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC243(%rip), %xmm0
+	movsd	.LC241(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
@@ -7032,7 +6941,7 @@ _Z8espectroeeeeeeeee:
 	fldt	192(%rbp)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC243(%rip), %xmm0
+	movsd	.LC241(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
@@ -7044,12 +6953,12 @@ _Z8espectroeeeeeeeee:
 	fldt	128(%rbp)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC9(%rip), %xmm0
+	movsd	.LC6(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
 	movapd	%xmm0, %xmm1
-	movsd	.LC254(%rip), %xmm0
+	movsd	.LC252(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
 	movsd	%xmm1, -80(%rbp)
 	fldl	-80(%rbp)
@@ -7059,7 +6968,7 @@ _Z8espectroeeeeeeeee:
 	fldt	192(%rbp)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC243(%rip), %xmm0
+	movsd	.LC241(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
@@ -7075,7 +6984,7 @@ _Z8espectroeeeeeeeee:
 	fldt	-80(%rbp)
 	fmulp	%st, %st(1)
 	fldt	80(%rbp)
-	fldt	.LC255(%rip)
+	fldt	.LC253(%rip)
 	fmulp	%st, %st(1)
 	fldt	176(%rbp)
 	fdivrp	%st, %st(1)
@@ -7086,7 +6995,7 @@ _Z8espectroeeeeeeeee:
 	fldt	176(%rbp)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC256(%rip), %xmm0
+	movsd	.LC254(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
@@ -7096,13 +7005,13 @@ _Z8espectroeeeeeeeee:
 	fmulp	%st, %st(1)
 	fstpt	-80(%rbp)
 	fldt	112(%rbp)
-	fldt	.LC257(%rip)
+	fldt	.LC255(%rip)
 	fmulp	%st, %st(1)
 	fldt	176(%rbp)
 	fdivrp	%st, %st(1)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm0
-	movq	.LC248(%rip), %rax
+	movq	.LC246(%rip), %rax
 	movapd	%xmm0, %xmm1
 	movq	%rax, %xmm0
 	call	_Z4pow_dd
@@ -7110,7 +7019,7 @@ _Z8espectroeeeeeeeee:
 	fldt	192(%rbp)
 	fstpl	56(%rbp)
 	movsd	56(%rbp), %xmm2
-	movsd	.LC243(%rip), %xmm0
+	movsd	.LC241(%rip), %xmm0
 	movapd	%xmm0, %xmm1
 	movapd	%xmm2, %xmm0
 	call	_Z4pow_dd
@@ -7141,7 +7050,7 @@ _Z8espectroeeeeeeeee:
 	.def	__tcf_0;	.scl	3;	.type	32;	.endef
 	.seh_proc	__tcf_0
 __tcf_0:
-.LFB2293:
+.LFB2284:
 	pushq	%rbp
 	.seh_pushreg	%rbp
 	movq	%rsp, %rbp
@@ -7159,7 +7068,7 @@ __tcf_0:
 	.def	_Z41__static_initialization_and_destruction_0ii;	.scl	3;	.type	32;	.endef
 	.seh_proc	_Z41__static_initialization_and_destruction_0ii
 _Z41__static_initialization_and_destruction_0ii:
-.LFB2292:
+.LFB2283:
 	pushq	%rbp
 	.seh_pushreg	%rbp
 	movq	%rsp, %rbp
@@ -7170,14 +7079,14 @@ _Z41__static_initialization_and_destruction_0ii:
 	movl	%ecx, 16(%rbp)
 	movl	%edx, 24(%rbp)
 	cmpl	$1, 16(%rbp)
-	jne	.L167
+	jne	.L148
 	cmpl	$65535, 24(%rbp)
-	jne	.L167
+	jne	.L148
 	leaq	_ZStL8__ioinit(%rip), %rcx
 	call	_ZNSt8ios_base4InitC1Ev
 	leaq	__tcf_0(%rip), %rcx
 	call	atexit
-.L167:
+.L148:
 	nop
 	addq	$32, %rsp
 	popq	%rbp
@@ -7186,7 +7095,7 @@ _Z41__static_initialization_and_destruction_0ii:
 	.def	_GLOBAL__sub_I__Z4pow_dd;	.scl	3;	.type	32;	.endef
 	.seh_proc	_GLOBAL__sub_I__Z4pow_dd
 _GLOBAL__sub_I__Z4pow_dd:
-.LFB2294:
+.LFB2285:
 	pushq	%rbp
 	.seh_pushreg	%rbp
 	movq	%rsp, %rbp
@@ -7209,1062 +7118,1055 @@ _GLOBAL__sub_I__Z4pow_dd:
 	.align 8
 .LC0:
 	.long	0
-	.long	0
-	.align 16
-.LC3:
-	.long	0
-	.long	-2147483648
-	.long	0
-	.long	0
-	.align 8
-.LC4:
-	.long	0
 	.long	1072693248
 	.align 16
-.LC5:
+.LC2:
 	.long	-1
 	.long	2147483647
 	.long	0
 	.long	0
 	.align 8
-.LC6:
+.LC3:
 	.long	0
 	.long	1074790400
 	.align 8
-.LC7:
+.LC4:
 	.long	0
 	.long	-1074790400
 	.align 8
-.LC8:
+.LC5:
 	.long	-266631570
 	.long	1074340345
 	.align 8
-.LC9:
+.LC6:
 	.long	0
 	.long	1073741824
 	.align 8
-.LC10:
+.LC7:
 	.long	0
 	.long	-1072693248
+	.align 16
+.LC8:
+	.long	0
+	.long	-2147483648
+	.long	0
+	.long	0
 	.align 8
-.LC11:
+.LC9:
 	.long	-266631570
 	.long	1075388921
 	.align 8
-.LC12:
+.LC10:
 	.long	0
 	.long	1076101120
 	.align 8
-.LC13:
+.LC11:
 	.long	-1340029796
 	.long	1067542642
 	.align 8
-.LC14:
+.LC12:
 	.long	1099511628
 	.long	1067509088
 	.align 8
-.LC15:
+.LC13:
 	.long	383665294
 	.long	1039427809
 	.align 8
-.LC16:
+.LC14:
 	.long	-560151037
 	.long	1039666499
 	.align 8
-.LC17:
+.LC15:
 	.long	-1407941475
 	.long	1039634974
 	.align 8
-.LC18:
+.LC16:
 	.long	-424114356
 	.long	1039283693
 	.align 8
-.LC19:
+.LC17:
 	.long	-416112199
 	.long	1039261175
 	.align 8
-.LC20:
+.LC18:
 	.long	303643717
 	.long	1039652989
 	.align 8
-.LC21:
+.LC19:
 	.long	-1479960894
 	.long	1039837636
 	.align 8
-.LC22:
+.LC20:
 	.long	-1447952263
 	.long	1039747564
 	.align 8
-.LC23:
+.LC21:
 	.long	311645875
 	.long	1039630471
 	.align 8
-.LC24:
+.LC22:
 	.long	-741294080
 	.long	1132111157
 	.align 8
-.LC25:
+.LC23:
 	.long	-2127697391
 	.long	1030854553
 	.align 8
-.LC26:
+.LC24:
 	.long	0
 	.long	-2147483648
 	.align 8
-.LC27:
+.LC25:
 	.long	-966787072
 	.long	1119665522
 	.align 8
-.LC28:
+.LC26:
 	.long	-858993459
 	.long	-1074475828
 	.align 8
-.LC29:
+.LC27:
 	.long	0
 	.long	-1058193760
 	.align 8
-.LC30:
+.LC28:
 	.long	1733216256
 	.long	1134281069
 	.align 8
-.LC31:
+.LC29:
 	.long	-721420288
 	.long	1112840962
 	.align 8
-.LC32:
+.LC30:
 	.long	-858993459
 	.long	-1075000116
 	.align 8
-.LC33:
+.LC31:
 	.long	0
 	.long	-1058471392
 	.align 8
-.LC34:
+.LC32:
 	.long	-2068456250
 	.long	1067700348
 	.align 8
-.LC35:
+.LC33:
 	.long	-1717986918
 	.long	1074108825
 	.align 8
-.LC36:
+.LC34:
 	.long	0
 	.long	-1062691840
 	.align 8
-.LC37:
+.LC35:
 	.long	-1436237064
 	.long	1066554464
 	.align 8
-.LC38:
+.LC36:
 	.long	0
 	.long	-1063178240
 	.align 8
-.LC39:
+.LC37:
 	.long	-1543503872
 	.long	1108913687
 	.align 8
-.LC40:
+.LC38:
 	.long	1717986918
 	.long	-1075419546
 	.align 8
-.LC41:
+.LC39:
 	.long	0
 	.long	-1061109760
 	.align 8
-.LC42:
+.LC40:
 	.long	0
 	.long	1100313898
 	.align 8
-.LC43:
+.LC41:
 	.long	858993459
 	.long	-1076677837
 	.align 8
-.LC44:
+.LC42:
 	.long	0
 	.long	1079296000
 	.align 8
-.LC45:
+.LC43:
 	.long	1733216256
 	.long	1135329645
 	.align 8
-.LC46:
+.LC44:
 	.long	343932928
 	.long	1113962018
 	.align 8
-.LC47:
+.LC45:
 	.long	-1717986918
 	.long	-1075209831
 	.align 8
-.LC48:
+.LC46:
 	.long	0
 	.long	-1058440672
 	.align 8
-.LC49:
+.LC47:
 	.long	1404830855
 	.long	1150460541
 	.align 8
-.LC50:
+.LC48:
 	.long	0
 	.long	-1073741824
 	.align 8
-.LC51:
+.LC49:
 	.long	954353152
 	.long	1133797218
 	.align 8
-.LC52:
+.LC50:
 	.long	0
 	.long	-1058190976
 	.align 8
-.LC53:
+.LC51:
 	.long	0
 	.long	1080754176
 	.align 8
-.LC54:
+.LC52:
 	.long	0
 	.long	1073217536
 	.align 8
-.LC55:
+.LC53:
 	.long	0
 	.long	-1063585792
 	.align 8
-.LC56:
+.LC54:
 	.long	0
 	.long	1085558784
 	.align 8
-.LC57:
+.LC55:
 	.long	-858993459
 	.long	1073007820
 	.align 8
-.LC58:
+.LC56:
 	.long	0
 	.long	-1060987776
 	.align 8
-.LC59:
+.LC57:
 	.long	955200726
 	.long	1067599685
 	.align 8
-.LC60:
+.LC58:
 	.long	858993459
 	.long	1073951539
 	.align 8
-.LC61:
+.LC59:
 	.long	0
 	.long	-1064265728
 	.align 8
-.LC62:
+.LC60:
 	.long	1030792151
 	.long	1073469194
 	.align 8
-.LC63:
+.LC61:
 	.long	-1717986918
 	.long	1073846681
 	.align 8
-.LC64:
+.LC62:
 	.long	0
 	.long	-1061286656
 	.align 8
-.LC65:
+.LC63:
 	.long	0
 	.long	1098497996
 	.align 8
-.LC66:
+.LC64:
 	.long	0
 	.long	-1067032576
 	.align 8
-.LC67:
+.LC65:
 	.long	0
 	.long	1099521572
 	.align 8
-.LC68:
+.LC66:
 	.long	-1717986918
 	.long	1069128089
 	.align 8
-.LC69:
+.LC67:
 	.long	0
 	.long	-1058894688
 	.align 8
-.LC70:
+.LC68:
 	.long	0
 	.long	1086428160
 	.align 8
-.LC71:
+.LC69:
 	.long	0
 	.long	-1062629888
 	.align 8
-.LC72:
+.LC70:
 	.long	0
 	.long	1082787840
 	.align 8
-.LC73:
+.LC71:
 	.long	-1717986918
 	.long	1072798105
 	.align 8
-.LC74:
+.LC72:
 	.long	0
 	.long	-1059935552
 	.align 8
-.LC75:
+.LC73:
 	.long	0
 	.long	1098909072
 	.align 8
-.LC76:
+.LC74:
 	.long	0
 	.long	-1066909696
 	.align 8
-.LC77:
+.LC75:
 	.long	-2147483648
 	.long	1104234764
 	.align 8
-.LC78:
+.LC76:
 	.long	0
 	.long	-1059577152
 	.align 8
-.LC79:
+.LC77:
 	.long	0
 	.long	1094016192
 	.align 8
-.LC80:
+.LC78:
 	.long	0
 	.long	-1061863424
 	.align 8
-.LC81:
+.LC79:
 	.long	0
 	.long	1080664064
 	.align 8
-.LC82:
+.LC80:
 	.long	0
 	.long	-1058674880
 	.align 8
-.LC83:
+.LC81:
 	.long	0
 	.long	1098622996
 	.align 8
-.LC84:
+.LC82:
 	.long	0
 	.long	-1060716160
 	.align 8
-.LC85:
+.LC83:
 	.long	0
 	.long	-1059296192
 	.align 8
-.LC86:
+.LC84:
 	.long	-1073741824
 	.long	1102516518
 	.align 8
-.LC87:
+.LC85:
 	.long	0
 	.long	-1060991232
 	.align 8
-.LC88:
+.LC86:
 	.long	0
 	.long	1080254464
 	.align 8
-.LC89:
+.LC87:
 	.long	1717986918
 	.long	1073112678
 	.align 8
-.LC90:
+.LC88:
 	.long	0
 	.long	-1058822048
 	.align 8
-.LC91:
+.LC89:
 	.long	0
 	.long	1096110844
 	.align 8
-.LC92:
+.LC90:
 	.long	0
 	.long	-1059336192
 	.align 8
-.LC93:
+.LC91:
 	.long	0
 	.long	1096333344
 	.align 8
-.LC94:
+.LC92:
 	.long	0
 	.long	1071644672
 	.align 8
-.LC95:
+.LC93:
 	.long	0
 	.long	-1061207552
 	.align 8
-.LC96:
+.LC94:
 	.long	-1718796896
 	.long	1142357038
 	.align 8
-.LC97:
+.LC95:
 	.long	1717986918
 	.long	-1074370970
 	.align 8
-.LC98:
+.LC96:
 	.long	-413574016
 	.long	1137788704
 	.align 8
-.LC99:
+.LC97:
 	.long	-1717986918
 	.long	-1073636967
 	.align 8
-.LC100:
+.LC98:
 	.long	0
 	.long	-1058926176
 	.align 8
-.LC101:
+.LC99:
 	.long	0
 	.long	1095614768
 	.align 8
-.LC102:
+.LC100:
 	.long	0
 	.long	1079918592
 	.align 8
-.LC103:
+.LC101:
 	.long	0
 	.long	1086521600
 	.align 8
-.LC104:
+.LC102:
 	.long	858993459
 	.long	1071854387
 	.align 8
-.LC105:
+.LC103:
 	.long	0
 	.long	-1059702080
 	.align 8
-.LC106:
+.LC104:
 	.long	0
 	.long	1100970148
 	.align 8
-.LC107:
+.LC105:
 	.long	0
 	.long	-1067016192
 	.align 8
-.LC108:
+.LC106:
 	.long	0
 	.long	1077051392
 	.align 8
-.LC109:
+.LC107:
 	.long	-858993459
 	.long	1072483532
 	.align 8
-.LC110:
+.LC108:
 	.long	0
 	.long	-1060364672
 	.align 8
-.LC111:
+.LC109:
 	.long	0
 	.long	1099109072
 	.align 8
-.LC112:
+.LC110:
 	.long	536870912
 	.long	1104322655
 	.align 8
-.LC113:
+.LC111:
 	.long	-1717986918
 	.long	-1077306983
 	.align 8
-.LC114:
+.LC112:
 	.long	0
 	.long	-1058965280
 	.align 8
-.LC115:
+.LC113:
 	.long	0
 	.long	1098810496
 	.align 8
-.LC116:
+.LC114:
 	.long	0
 	.long	-1067139072
 	.align 8
-.LC117:
+.LC115:
 	.long	0
 	.long	1099846572
 	.align 8
-.LC118:
+.LC116:
 	.long	0
 	.long	-1060621824
 	.align 8
-.LC119:
+.LC117:
 	.long	0
 	.long	1098060496
 	.align 8
-.LC120:
+.LC118:
 	.long	1325400064
 	.long	1113782727
 	.align 8
-.LC121:
+.LC119:
 	.long	0
 	.long	-1061030912
 	.align 8
-.LC122:
+.LC120:
 	.long	0
 	.long	1084178432
 	.align 8
-.LC123:
+.LC121:
 	.long	858993459
 	.long	1072902963
 	.align 8
-.LC124:
+.LC122:
 	.long	0
 	.long	1089850688
 	.align 8
-.LC125:
+.LC123:
 	.long	0
 	.long	-1059877056
 	.align 8
-.LC126:
+.LC124:
 	.long	618475290
 	.long	1071481094
 	.align 8
-.LC127:
+.LC125:
 	.long	-858993460
 	.long	1078660300
 	.align 8
-.LC128:
+.LC126:
 	.long	0
 	.long	-1061093120
 	.align 8
-.LC129:
+.LC127:
 	.long	1202590843
 	.long	1072986849
 	.align 8
-.LC130:
+.LC128:
 	.long	0
 	.long	-1068957696
 	.align 8
-.LC131:
+.LC129:
 	.long	1408749273
 	.long	1069262307
 	.align 8
-.LC132:
+.LC130:
 	.long	858993459
 	.long	1073427251
 	.align 8
-.LC133:
+.LC131:
 	.long	0
 	.long	-1059420416
 	.align 8
-.LC134:
+.LC132:
 	.long	0
 	.long	1097636920
 	.align 8
-.LC135:
+.LC133:
 	.long	-2147483648
 	.long	1103842438
 	.align 8
-.LC136:
+.LC134:
 	.long	-1717986918
 	.long	-1078355559
 	.align 8
-.LC137:
+.LC135:
 	.long	0
 	.long	-1057884128
 	.align 8
-.LC138:
+.LC136:
 	.long	0
 	.long	-1061471744
 	.align 8
-.LC139:
+.LC137:
 	.long	-1879048192
 	.long	1109078482
 	.align 8
-.LC140:
+.LC138:
 	.long	0
 	.long	-1061137280
 	.align 8
-.LC141:
+.LC139:
 	.long	0
 	.long	1098160496
 	.align 8
-.LC142:
+.LC140:
 	.long	0
 	.long	1098747996
 	.align 8
-.LC143:
+.LC141:
 	.long	0
 	.long	-1058539424
 	.align 8
-.LC144:
+.LC142:
 	.long	1073741824
 	.long	1102430581
 	.align 8
-.LC145:
+.LC143:
 	.long	0
 	.long	-1075838976
 	.align 8
-.LC146:
+.LC144:
 	.long	-2107473920
 	.long	1125125866
 	.align 8
-.LC147:
+.LC145:
 	.long	-1717986918
 	.long	-1074161255
 	.align 8
-.LC148:
+.LC146:
 	.long	0
 	.long	-1059985344
 	.align 8
-.LC149:
+.LC147:
 	.long	0
 	.long	1095164768
 	.align 8
-.LC150:
+.LC148:
 	.long	-1342177280
 	.long	1105590957
 	.align 8
-.LC151:
+.LC149:
 	.long	858993459
 	.long	-1075629261
 	.align 8
-.LC152:
+.LC150:
 	.long	0
 	.long	-1060368768
 	.align 8
-.LC153:
+.LC151:
 	.long	0
 	.long	1099077822
 	.align 8
-.LC154:
+.LC152:
 	.long	2080374784
 	.long	1109510603
 	.align 8
-.LC155:
+.LC153:
 	.long	0
 	.long	-1060369408
 	.align 8
-.LC156:
+.LC154:
 	.long	0
 	.long	-1063472128
 	.align 8
-.LC157:
+.LC155:
 	.long	0
 	.long	1093886192
 	.align 8
-.LC158:
+.LC156:
 	.long	-1717986918
 	.long	1071225241
 	.align 8
-.LC159:
+.LC157:
 	.long	0
 	.long	-1061215744
 	.align 8
-.LC160:
+.LC158:
 	.long	0
 	.long	1079410688
 	.align 8
-.LC161:
+.LC159:
 	.long	0
 	.long	1080885248
 	.align 8
-.LC162:
+.LC160:
 	.long	1717986918
 	.long	1078978150
 	.align 8
-.LC163:
+.LC161:
 	.long	0
 	.long	-1060454144
 	.align 8
-.LC164:
+.LC162:
 	.long	0
 	.long	1100938898
 	.align 8
-.LC165:
+.LC163:
 	.long	0
 	.long	-1063021568
 	.align 8
-.LC166:
+.LC164:
 	.long	1474297856
 	.long	1118521579
 	.align 8
-.LC167:
+.LC165:
 	.long	858993459
 	.long	1070805811
 	.align 8
-.LC168:
+.LC166:
 	.long	0
 	.long	-1061654528
 	.align 8
-.LC169:
+.LC167:
 	.long	0
 	.long	1098372996
 	.align 8
-.LC170:
+.LC168:
 	.long	0
 	.long	1093686192
 	.align 8
-.LC171:
+.LC169:
 	.long	0
 	.long	-1058351104
 	.align 8
-.LC172:
+.LC170:
 	.long	0
 	.long	1100001398
 	.align 8
-.LC173:
+.LC171:
 	.long	0
 	.long	1094286192
 	.align 8
-.LC174:
+.LC172:
 	.long	0
 	.long	-1061750016
 	.align 8
-.LC175:
+.LC173:
 	.long	0
 	.long	1099421572
 	.align 8
-.LC176:
+.LC174:
 	.long	0
 	.long	1095865844
 	.align 8
-.LC177:
+.LC175:
 	.long	0
 	.long	-1058320800
 	.align 8
-.LC178:
+.LC176:
 	.long	0
 	.long	1099152822
 	.align 8
-.LC179:
+.LC177:
 	.long	0
 	.long	-1058071040
 	.align 8
-.LC180:
+.LC178:
 	.long	-1793225728
 	.long	1141075404
 	.align 8
-.LC181:
+.LC179:
 	.long	0
 	.long	-1065926656
 	.align 8
-.LC182:
+.LC180:
 	.long	-566005760
 	.long	1129938335
 	.align 8
-.LC183:
+.LC181:
 	.long	1717986918
 	.long	-1073846682
 	.align 8
-.LC184:
+.LC182:
 	.long	0
 	.long	-1059558656
 	.align 8
-.LC185:
+.LC183:
 	.long	0
 	.long	1098154246
 	.align 8
-.LC186:
+.LC184:
 	.long	0
 	.long	1087860736
 	.align 8
-.LC187:
+.LC185:
 	.long	1717986918
 	.long	1072064102
 	.align 8
-.LC188:
+.LC186:
 	.long	0
 	.long	-1059456960
 	.align 8
-.LC189:
+.LC187:
 	.long	0
 	.long	1093367616
 	.align 8
-.LC190:
+.LC188:
 	.long	0
 	.long	-1066090496
 	.align 8
-.LC191:
+.LC189:
 	.long	0
 	.long	1083205632
 	.align 8
-.LC192:
+.LC190:
 	.long	0
 	.long	-1059374720
 	.align 8
-.LC193:
+.LC191:
 	.long	0
 	.long	1076494336
 	.align 8
-.LC194:
+.LC192:
 	.long	1717986918
 	.long	1073636966
 	.align 8
-.LC195:
+.LC193:
 	.long	0
 	.long	1081991168
 	.align 8
-.LC196:
+.LC194:
 	.long	1992864825
 	.long	1070768062
 	.align 8
-.LC197:
+.LC195:
 	.long	0
 	.long	1074003968
 	.align 8
-.LC198:
+.LC196:
 	.long	0
 	.long	-1059567424
 	.align 8
-.LC199:
+.LC197:
 	.long	343597383
 	.long	1071728558
 	.align 8
-.LC200:
+.LC198:
 	.long	0
 	.long	-1061978624
 	.align 8
-.LC201:
+.LC199:
 	.long	-1066526279
 	.long	1062307815
 	.align 8
-.LC202:
+.LC200:
 	.long	858993459
 	.long	1074213683
 	.align 8
-.LC203:
+.LC201:
 	.long	0
 	.long	-1063149056
 	.align 8
-.LC204:
+.LC202:
 	.long	0
 	.long	1078525952
 	.align 8
-.LC205:
+.LC203:
 	.long	-1717986918
 	.long	1073322393
 	.align 8
-.LC206:
+.LC204:
 	.long	0
 	.long	-1065480192
 	.align 8
-.LC207:
+.LC205:
 	.long	-1546188227
 	.long	1074937200
 	.align 8
-.LC208:
+.LC206:
 	.long	-858993459
 	.long	1073532108
 	.align 8
-.LC209:
+.LC207:
 	.long	0
 	.long	-1061837056
 	.align 8
-.LC210:
+.LC208:
 	.long	-858993459
 	.long	1076022476
 	.align 8
-.LC211:
+.LC209:
 	.long	0
 	.long	-1062640128
 	.align 8
-.LC212:
+.LC210:
 	.long	329853488
 	.long	1066943696
 	.align 8
-.LC213:
+.LC211:
 	.long	1717986918
 	.long	1073899110
 	.align 8
-.LC214:
+.LC212:
 	.long	0
 	.long	1081815040
 	.align 8
-.LC215:
+.LC213:
 	.long	0
 	.long	-1064968192
 	.align 8
-.LC216:
+.LC214:
 	.long	1073741824
 	.long	1102774331
 	.align 8
-.LC217:
+.LC215:
 	.long	-1889785610
 	.long	-1076300350
 	.align 8
-.LC218:
+.LC216:
 	.long	0
 	.long	-1059898112
 	.align 8
-.LC219:
+.LC217:
 	.long	-1342177280
 	.long	1111224462
 	.align 8
-.LC220:
+.LC218:
 	.long	0
 	.long	-1059693312
 	.align 8
-.LC221:
+.LC219:
 	.long	-300661455
 	.long	1051603696
 	.align 8
-.LC222:
+.LC220:
 	.long	0
 	.long	1084740608
 	.align 8
-.LC223:
+.LC221:
 	.long	0
 	.long	1102254800
 	.align 8
-.LC224:
+.LC222:
 	.long	0
 	.long	-1062101504
 	.align 8
-.LC225:
+.LC223:
 	.long	0
 	.long	1083297792
 	.align 8
-.LC226:
+.LC224:
 	.long	1546188227
 	.long	1073070735
 	.align 8
-.LC227:
+.LC225:
 	.long	0
 	.long	-1058888576
 	.align 8
-.LC228:
+.LC226:
 	.long	0
 	.long	1099365322
 	.align 8
-.LC229:
+.LC227:
 	.long	0
 	.long	-1062256640
 	.align 8
-.LC230:
+.LC228:
 	.long	0
 	.long	1090598464
 	.align 8
-.LC231:
+.LC229:
 	.long	1374389535
 	.long	1071980216
 	.align 8
-.LC232:
+.LC230:
 	.long	0
 	.long	-1060630528
 	.align 8
-.LC233:
+.LC231:
 	.long	-1717986919
 	.long	1076042137
 	.align 8
-.LC234:
+.LC232:
 	.long	0
 	.long	-1063305216
 	.align 8
-.LC235:
+.LC233:
 	.long	-830131279
 	.long	1064496235
 	.align 8
-.LC236:
+.LC234:
 	.long	0
 	.long	1074135040
 	.align 8
-.LC237:
+.LC235:
 	.long	0
 	.long	-1061020032
 	.align 8
-.LC238:
+.LC236:
 	.long	0
 	.long	1097011920
 	.align 8
-.LC239:
+.LC237:
 	.long	0
 	.long	-1064558592
 	.align 8
-.LC240:
+.LC238:
 	.long	0
 	.long	1098560496
 	.align 8
-.LC241:
+.LC239:
 	.long	0
 	.long	-1060102912
 	.align 8
-.LC242:
+.LC240:
 	.long	0
 	.long	1075052544
 	.align 8
-.LC243:
+.LC241:
 	.long	0
 	.long	1074266112
 	.align 8
-.LC244:
+.LC242:
 	.long	0
 	.long	1075314688
 	.align 8
-.LC246:
+.LC244:
 	.long	1455224880
 	.long	1085431308
 	.align 16
-.LC247:
+.LC245:
 	.long	592992256
 	.long	-1205221036
 	.long	16383
 	.long	0
 	.align 8
-.LC248:
+.LC246:
 	.long	-1961601175
 	.long	1074118410
 	.align 16
-.LC249:
+.LC247:
 	.long	-1375911936
 	.long	-922199498
 	.long	49213
 	.long	0
 	.align 16
-.LC250:
+.LC248:
 	.long	-1351849984
 	.long	-2043167483
 	.long	16363
 	.long	0
 	.align 16
-.LC251:
+.LC249:
 	.long	58421248
 	.long	-169281528
 	.long	16300
 	.long	0
 	.align 16
-.LC252:
+.LC250:
 	.long	2020925440
 	.long	-1055133522
 	.long	16363
 	.long	0
 	.align 8
-.LC253:
+.LC251:
 	.long	-743691890
 	.long	1065364924
 	.align 8
-.LC254:
+.LC252:
 	.long	486644981
 	.long	1043940732
 	.align 16
-.LC255:
+.LC253:
 	.long	-917274624
 	.long	-2046455431
 	.long	16444
 	.long	0
 	.align 8
-.LC256:
+.LC254:
 	.long	0
 	.long	1073872896
 	.align 16
-.LC257:
+.LC255:
 	.long	-1375911936
 	.long	-922199498
 	.long	16444
 	.long	0
 	.align 8
-.LC258:
+.LC256:
 	.long	-392762858
 	.long	1126216828
 	.align 16
-.LC259:
+.LC257:
 	.long	-1351849984
 	.long	-2043167483
 	.long	16364
 	.long	0
 	.align 16
-.LC260:
+.LC258:
 	.long	1115228160
 	.long	-1943943197
 	.long	16415
 	.long	0
 	.ident	"GCC: (x86_64-posix-seh, Built by strawberryperl.com project) 8.3.0"
-	.def	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc;	.scl	2;	.type	32;	.endef
-	.def	_ZNSolsEPFRSoS_E;	.scl	2;	.type	32;	.endef
 	.def	pow;	.scl	2;	.type	32;	.endef
-	.def	_ZNSolsEd;	.scl	2;	.type	32;	.endef
 	.def	sqrt;	.scl	2;	.type	32;	.endef
 	.def	exp;	.scl	2;	.type	32;	.endef
 	.def	_ZNSt8ios_base4InitD1Ev;	.scl	2;	.type	32;	.endef
@@ -8595,13 +8497,3 @@ _GLOBAL__sub_I__Z4pow_dd:
 	.linkonce	discard
 .refptr.alfaM:
 	.quad	alfaM
-	.section	.rdata$.refptr._ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_, "dr"
-	.globl	.refptr._ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
-	.linkonce	discard
-.refptr._ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_:
-	.quad	_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
-	.section	.rdata$.refptr._ZSt4cout, "dr"
-	.globl	.refptr._ZSt4cout
-	.linkonce	discard
-.refptr._ZSt4cout:
-	.quad	_ZSt4cout
